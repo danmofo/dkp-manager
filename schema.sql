@@ -43,6 +43,8 @@ create table dkp_history (
 	id int primary key auto_increment,
 	player_id int not null,
 	dkp decimal not null default 0.00,
+	created timestamp not null default current_timestamp,
+	-- add created column for when it was awarded.
 	foreign key(player_id) references player(id)
 );
 
@@ -60,10 +62,12 @@ insert into class (id) values ("Shaman");
 insert into class (id) values ("Paladin");
 insert into class (id) values ("Warrior");
 
-insert into player (guild_id, class_id, dkp, name, created) values (1, 'Priest', 100, 'Danimal', now());
-insert into player (guild_id, class_id, name, created) values (1, 'Hunter', 'Huntard', now());
-insert into player (guild_id, class_id, name, created) values (2, 'Warlock', 'Shadowman', now());
+insert into player (guild_id, class_id, dkp, name, created) values (1, 'Priest', 500, 'Danimal', now());
+insert into player (guild_id, class_id, dkp, name, created) values (1, 'Hunter', 50, 'Huntard', now());
+insert into player (guild_id, class_id, dkp, name, created) values (2, 'Warlock', 400, 'Shadowman', now());
 
-insert into dkp_history (player_id, dkp) values (1, 100);
+insert into dkp_history (player_id, dkp, created) values (1, 100, date_sub(now(), interval 2 day));
+insert into dkp_history (player_id, dkp, created) values (1, 150, date_sub(now(), interval 1 day));
+insert into dkp_history (player_id, dkp, created) values (1, 250, now());
 insert into dkp_history (player_id, dkp) values (2, 50);
 insert into dkp_history (player_id, dkp) values (3, 400);

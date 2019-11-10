@@ -4,7 +4,7 @@
 	<p>There are <strong>${guild.players?size}</strong> players in this guild.</p>
 	<ul>
 		<#list guild.players as player>
-			<li>${player.name} - ${player.dkp} DKP</li>
+			<li><a href="/players/${player.id}">${player.name}</a> - ${player.dkp} DKP</li>
 		</#list>
 	</ul>
 </@layout.general>

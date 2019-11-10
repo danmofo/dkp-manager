@@ -35,7 +35,6 @@ public class GuildController {
         }
 
         m.addAttribute("guild", guild);
-
         return "view-guild";
     }
 

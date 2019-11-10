@@ -2,6 +2,7 @@ package com.dmoffat.dkpmanager.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "player")
@@ -13,25 +14,32 @@ public class Player {
 
     @ManyToOne
     private Guild guild;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "class_id")
-//    private WowClass wowClass;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private WowClass wowClass;
 
     private String name;
     private Double dkp;
+
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    private List<DkpHistory> dkpHistory;
+
     private LocalDateTime created;
     private LocalDateTime updated;
+
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public Guild getGuild() { return guild; }
     public void setGuild(Guild guild) { this.guild = guild; }
-//    public WowClass getWowClass() { return wowClass; }
-//    public void setWowClass(WowClass wowClass) { this.wowClass = wowClass; }
+    public WowClass getWowClass() { return wowClass; }
+    public void setWowClass(WowClass wowClass) { this.wowClass = wowClass; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public Double getDkp() { return dkp; }
     public void setDkp(Double dkp) { this.dkp = dkp; }
+    public List<DkpHistory> getDkpHistory() { return dkpHistory; }
+    public void setDkpHistory(List<DkpHistory> dkpHistory) { this.dkpHistory = dkpHistory; }
     public LocalDateTime getCreated() { return created; }
     public void setCreated(LocalDateTime created) { this.created = created; }
     public LocalDateTime getUpdated() { return updated; }
