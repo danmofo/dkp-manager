@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
+@Transactional
 public class HibernateDao<E, K extends Serializable> {
 
     @Autowired

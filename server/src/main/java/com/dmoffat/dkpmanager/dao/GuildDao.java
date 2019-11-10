@@ -9,7 +9,9 @@ import javax.persistence.Query;
 public class GuildDao extends HibernateDao<Guild, Integer> {
     public Guild findByUri(String guildUri) {
         Query query = entityManager().createQuery(
-                "from Guild g where g.uri = :guildUri");
+                "from Guild g " +
+                "left join fetch g.players " +
+                "where g.uri = :guildUri");
         query.setParameter("guildUri", guildUri);
         return getSingleResult(query);
     }

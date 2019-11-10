@@ -1,5 +1,10 @@
 <#import "template/base.ftl" as layout />
 <@layout.general>
 	<h1>${guild.name}</h1>
-	<p>List of players goes here....</p>
+	<p>There are <strong>${guild.players?size}</strong> players in this guild.</p>
+	<ul>
+		<#list guild.players as player>
+			<li>${player.name} - ${player.dkp} DKP</li>
+		</#list>
+	</ul>
 </@layout.general>

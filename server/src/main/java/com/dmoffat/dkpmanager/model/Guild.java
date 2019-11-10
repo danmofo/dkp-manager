@@ -2,6 +2,7 @@ package com.dmoffat.dkpmanager.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "guild")
@@ -12,6 +13,10 @@ public class Guild {
     private Integer id;
     private String name;
     private String uri;
+
+    @OneToMany(mappedBy = "guild")
+    private List<Player> players;
+
     private LocalDateTime created;
     private LocalDateTime updated;
 
@@ -21,6 +26,8 @@ public class Guild {
     public void setName(String name) { this.name = name; }
     public String getUri() { return uri; }
     public void setUri(String uri) { this.uri = uri; }
+    public List<Player> getPlayers() { return players; }
+    public void setPlayers(List<Player> players) { this.players = players; }
     public LocalDateTime getCreated() { return created; }
     public void setCreated(LocalDateTime created) { this.created = created; }
     public LocalDateTime getUpdated() { return updated; }

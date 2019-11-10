@@ -11,12 +11,12 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Guild guild;
-
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private WowClass wowClass;
+    private Guild guild;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "class_id")
+//    private WowClass wowClass;
 
     private String name;
     private Double dkp;
@@ -26,8 +26,8 @@ public class Player {
     public void setId(Integer id) { this.id = id; }
     public Guild getGuild() { return guild; }
     public void setGuild(Guild guild) { this.guild = guild; }
-    public WowClass getWowClass() { return wowClass; }
-    public void setWowClass(WowClass wowClass) { this.wowClass = wowClass; }
+//    public WowClass getWowClass() { return wowClass; }
+//    public void setWowClass(WowClass wowClass) { this.wowClass = wowClass; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public Double getDkp() { return dkp; }
