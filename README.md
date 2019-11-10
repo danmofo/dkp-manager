@@ -20,7 +20,7 @@ A website where users can register their guild and manage DKP in the game World 
 
 ## Features/functions
 
-- Lists guilds
+x Lists guilds
 - Guild page
 	- List players in the guild
 	- List the amount of DKP each player has

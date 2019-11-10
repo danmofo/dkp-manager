@@ -8,6 +8,12 @@ public class ErrorController {
 
     @GetMapping("error")
     public String error() {
-        return "error.ftl";
+        return "error";
     }
+
+    @GetMapping("404")
+    public String pageNotFound() {
+        return "404";
+    }
+
 }

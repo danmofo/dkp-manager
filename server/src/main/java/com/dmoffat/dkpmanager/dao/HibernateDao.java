@@ -6,6 +6,8 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -21,6 +23,10 @@ public class HibernateDao<E, K extends Serializable> {
         // getActualTypeArguments() returns the actual class objects, e.g. <Donation, Integer> for donation DAO.
         // However, this doesn't work if you don't extend this class (getGenericSuperclass returns Object), and I couldn't find a way to actually get that type information.
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    }
+
+    protected EntityManager entityManager() {
+        return entityManager;
     }
 
     public void add(E entity) {
@@ -68,5 +74,14 @@ public class HibernateDao<E, K extends Serializable> {
             return count();
         }
         return ((Long)c.setProjection(Projections.rowCount()).uniqueResult()).intValue();
+    }
+
+    public E getSingleResult(Query query) {
+        try {
+            Object result = query.getSingleResult();
+            return (E)result;
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
 }

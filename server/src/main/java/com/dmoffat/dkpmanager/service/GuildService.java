@@ -20,4 +20,8 @@ public class GuildService {
     public List<Guild> list() {
         return guildDao.list();
     }
+
+    public Guild findByUri(String guildUri) {
+        return guildDao.findByUri(guildUri);
+    }
 }

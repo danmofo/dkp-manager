@@ -1,5 +1,5 @@
 <#import "template/base.ftl" as layout />
 <@layout.general>
-	<h1>Error!</h1>
-	<p>Something went wrong...</p>
+	<h1>Page not found</h1>
+	<p>We couldn't find that page.</p>
 </@layout.general>

@@ -11,6 +11,7 @@ public class Guild {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String uri;
     private LocalDateTime created;
     private LocalDateTime updated;
 
@@ -18,6 +19,8 @@ public class Guild {
     public void setId(Integer id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+    public String getUri() { return uri; }
+    public void setUri(String uri) { this.uri = uri; }
     public LocalDateTime getCreated() { return created; }
     public void setCreated(LocalDateTime created) { this.created = created; }
     public LocalDateTime getUpdated() { return updated; }
@@ -28,6 +31,7 @@ public class Guild {
         return "Guild{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", uri='" + uri + '\'' +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';

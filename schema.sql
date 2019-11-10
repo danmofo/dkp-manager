@@ -15,6 +15,7 @@ set foreign_key_checks=1;
 create table guild (
 	id int primary key auto_increment,
 	name varchar(255) not null,
+	uri varchar(255) not null,
 	created timestamp not null default current_timestamp,
 	updated timestamp null on update current_timestamp
 );
@@ -46,8 +47,8 @@ create table dkp_history (
 );
 
 -- Create dummy data
-insert into guild (name, created) values ("Dan's guild", now());
-insert into guild (name, created) values ("Another guild", now());
+insert into guild (name, uri, created) values ("Dan's guild", 'dans-guild', now());
+insert into guild (name, uri, created) values ("Another guild", 'another-guild', now());
 
 insert into class (id) values ("Priest");
 insert into class (id) values ("Hunter");
