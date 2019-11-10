@@ -5,6 +5,8 @@ import com.dmoffat.dkpmanager.model.Guild;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GuildService {
 
@@ -15,4 +17,7 @@ public class GuildService {
         return guildDao.find(id);
     }
 
+    public List<Guild> list() {
+        return guildDao.list();
+    }
 }

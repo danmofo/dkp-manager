@@ -18,6 +18,16 @@ A website where users can register their guild and manage DKP in the game World 
 - Write the rest of our DAOs / services.
 - ???
 
+## Features/functions
+
+- Lists guilds
+- Guild page
+	- List players in the guild
+	- List the amount of DKP each player has
+- Player page
+	- Contain a full list of DKP history - so you can see how much DKP has been awarded decayed.
+- Log in / Sign up pages
+
 ## Development
 
 ### Windows
