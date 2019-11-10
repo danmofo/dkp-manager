@@ -5,5 +5,5 @@
 		<#list guilds as guild>
 			<li>${guild.name}</li>
 		</#list>
-	</ul>
+	</ul>|
 </@layout.general>
