@@ -42,12 +42,19 @@ public class SessionInterceptor extends HandlerInterceptorAdapter  {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         logger.debug("SessionInterceptor#afterCompletion() - Request going out...");
         Session session = (Session)request.getAttribute("session");
-        Cookie sessionCookie = sessionService.createSessionCookie(session);
-        if(sessionCookie != null) {
-            logger.debug("Session data write success.");
-            response.addCookie(sessionCookie);
+
+        if(session.isChanged()) {
+            logger.debug("Session data has changed!");
+            Cookie sessionCookie = sessionService.createSessionCookie(session);
+            if(sessionCookie != null) {
+                logger.debug("Session data write success.");
+                response.addCookie(sessionCookie);
+            } else {
+                logger.error("Failed to write session data.");
+            }
         } else {
-            logger.error("Failed to write session data.");
+            logger.debug("The session data has not changed.");
         }
+
     }
 }
