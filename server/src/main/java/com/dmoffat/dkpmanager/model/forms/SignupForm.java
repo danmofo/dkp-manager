@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class SignupForm {
 
     @NotEmpty
-    @Length(min = 4)
+    @Length(min = 2)
     private String characterName;
 
     @NotNull

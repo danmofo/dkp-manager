@@ -44,6 +44,7 @@ public class SessionService {
     private String serialise(Session session) {
         try {
             String jsonStr = objectMapper.writeValueAsString(session);
+            System.out.println(jsonStr);
             return Base64Utils.encodeToUrlSafeString(jsonStr.getBytes());
         } catch (JsonProcessingException e) {
             e.printStackTrace();

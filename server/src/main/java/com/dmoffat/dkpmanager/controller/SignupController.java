@@ -1,10 +1,13 @@
 package com.dmoffat.dkpmanager.controller;
 
+import com.dmoffat.dkpmanager.model.Player;
+import com.dmoffat.dkpmanager.model.Session;
 import com.dmoffat.dkpmanager.model.forms.SignupForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
 import com.dmoffat.dkpmanager.service.GuildService;
 import com.dmoffat.dkpmanager.service.PlayerService;
+import com.dmoffat.dkpmanager.service.SessionService;
 import com.dmoffat.dkpmanager.service.WowClassService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,8 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -27,6 +32,7 @@ public class SignupController {
     @Autowired private PlayerService playerService;
     @Autowired private GuildService guildService;
     @Autowired private WowClassService wowClassService;
+    @Autowired private SessionService sessionService;
 
     @GetMapping("signup")
     public String signup(Model m) {
@@ -38,7 +44,8 @@ public class SignupController {
 
     @PostMapping("signup")
     @ResponseBody
-    public JsonResponse handleSignup(@Valid SignupForm signupForm, BindingResult result, Model m) {
+    public JsonResponse handleSignup(@Valid SignupForm signupForm, BindingResult result, @RequestAttribute Session session,
+                                     HttpServletResponse resp) {
         logger.debug(signupForm);
 
         if(result.hasErrors()) {
@@ -47,7 +54,9 @@ public class SignupController {
         }
 
         // todo: Handle duplicate email addresses.
-        playerService.signup(signupForm);
+        Player player = playerService.signup(signupForm);
+        session.addData("playerId", player.getId());
+        resp.addCookie(sessionService.createSessionCookie(session));
 
         return new JsonResponse(true);
     }

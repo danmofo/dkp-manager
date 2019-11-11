@@ -14,6 +14,11 @@ public class Session {
         this.data = new HashMap<>();
     }
 
+    @JsonIgnore
+    public boolean isLoggedIn() {
+        return this.data.get("playerId") != null;
+    }
+
     public Session addData(String key, Object value) {
         Object existingValue = this.data.get(key);
         if(existingValue == null || !existingValue.equals(value)) {
