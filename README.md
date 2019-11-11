@@ -20,7 +20,18 @@ A website where users can register their guild and manage DKP in the game World 
 
 ## Features/functions
 
-- Log in / Sign up pages
+- Session system
+	1. Request comes in
+		- If cookie exists
+			- Load session data
+		- If cookie doesn't exist
+			- Create new session
+	2. Handle request inside controller
+		- Do whatever, add/remove session data
+	3. When request is finished
+	    - Persist cookie to client
+- Log in
+- Post sign up actions (after form submission is succesful)
 
 ## Development
 
