@@ -3,6 +3,9 @@ package com.dmoffat.dkpmanager.controller;
 import com.dmoffat.dkpmanager.model.forms.SignupForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
+import com.dmoffat.dkpmanager.service.GuildService;
+import com.dmoffat.dkpmanager.service.PlayerService;
+import com.dmoffat.dkpmanager.service.WowClassService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +23,16 @@ import javax.validation.Valid;
 public class SignupController {
     private static final Logger logger = LogManager.getLogger(SignupController.class);
 
-    @Autowired
-    private MessageSource messageSource;
+    @Autowired private MessageSource messageSource;
+    @Autowired private PlayerService playerService;
+    @Autowired private GuildService guildService;
+    @Autowired private WowClassService wowClassService;
 
     @GetMapping("signup")
     public String signup(Model m) {
         m.addAttribute("signupForm", new SignupForm());
+        m.addAttribute("guilds", guildService.list());
+        m.addAttribute("classes", wowClassService.list());
         return "signup";
     }
 
@@ -39,7 +46,10 @@ public class SignupController {
             return new JsonResponse(new ValidationErrors(result, messageSource));
         }
 
-        return new JsonResponse(true).addPayload("hello-world", "foo-bar");
+        // todo: Handle duplicate email addresses.
+        playerService.signup(signupForm);
+
+        return new JsonResponse(true);
     }
 
 }

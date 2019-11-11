@@ -3,7 +3,7 @@
 	<h1>Guilds</h1>
 	<ul>
 		<#list guilds as guild>
-			<li>${guild.name}</li>
+			<li><a href="/guilds/${guild.uri}">${guild.name}</a></li>
 		</#list>
 	</ul>|
 </@layout.general>

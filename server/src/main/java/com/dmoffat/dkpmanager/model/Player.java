@@ -25,6 +25,9 @@ public class Player {
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
     private List<DkpHistory> dkpHistory;
 
+    private String email;
+    private String password;
+
     private LocalDateTime created;
     private LocalDateTime updated;
 
@@ -40,6 +43,10 @@ public class Player {
     public void setDkp(Double dkp) { this.dkp = dkp; }
     public List<DkpHistory> getDkpHistory() { return dkpHistory; }
     public void setDkpHistory(List<DkpHistory> dkpHistory) { this.dkpHistory = dkpHistory; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
     public LocalDateTime getCreated() { return created; }
     public void setCreated(LocalDateTime created) { this.created = created; }
     public LocalDateTime getUpdated() { return updated; }
@@ -51,6 +58,7 @@ public class Player {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dkp=" + dkp +
+                ", email=" + email +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';

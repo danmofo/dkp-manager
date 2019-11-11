@@ -32,6 +32,8 @@ create table player (
 	class_id varchar(255) not null,
 	name varchar(255) not null,
 	dkp decimal not null default 0.00,
+	email varchar(255) not null unique,
+	password varchar(255) not null,
 	created timestamp not null default current_timestamp,
 	updated timestamp null on update current_timestamp,	
 	foreign key(guild_id) references guild(id),
@@ -62,9 +64,9 @@ insert into class (id) values ("Shaman");
 insert into class (id) values ("Paladin");
 insert into class (id) values ("Warrior");
 
-insert into player (guild_id, class_id, dkp, name, created) values (1, 'Priest', 500, 'Danimal', now());
-insert into player (guild_id, class_id, dkp, name, created) values (1, 'Hunter', 50, 'Huntard', now());
-insert into player (guild_id, class_id, dkp, name, created) values (2, 'Warlock', 400, 'Shadowman', now());
+insert into player (guild_id, class_id, dkp, name, email, password, created) values (1, 'Priest', 500, 'Danimal', 'test@email.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', now());
+insert into player (guild_id, class_id, dkp, name, email, password, created) values (1, 'Hunter', 50, 'Huntard', 'test2@email.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', now());
+insert into player (guild_id, class_id, dkp, name, email, password, created) values (2, 'Warlock', 400, 'Shadowman', 'test3@email.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', now());
 
 insert into dkp_history (player_id, dkp, created) values (1, 100, date_sub(now(), interval 2 day));
 insert into dkp_history (player_id, dkp, created) values (1, 150, date_sub(now(), interval 1 day));
