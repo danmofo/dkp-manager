@@ -58,7 +58,7 @@ public class SignupController {
         session.addData("playerId", player.getId());
         resp.addCookie(sessionService.createSessionCookie(session));
 
-        return new JsonResponse(true);
+        return new JsonResponse(true).addPayload("redirectUrl", "/dashboard");
     }
 
 }

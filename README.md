@@ -13,10 +13,9 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Write the rest of our Java models / DAOs
-- Write the user flows and then write the controllers.
-- Write the rest of our DAOs / services.
-- ???
+- Write a way to log in and log out
+- Replace client-side sessions with server-side sessions to avoid having to manually add cookies to the response in AJAX endpoints.
+- ...?
 
 ## Features/functions
 
@@ -30,8 +29,6 @@ A website where users can register their guild and manage DKP in the game World 
 		- Do whatever, add/remove session data
 	3. When request is finished
 	    - Persist cookie to client
-- Log in
-- Post sign up actions (after form submission is succesful)
 
 ## Development
 

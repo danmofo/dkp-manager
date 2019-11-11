@@ -26,8 +26,7 @@ class SignupForm {
 				return;
 			}
 
-			// Success!
-			
+			window.location.href = json.payload.redirectUrl;
 		});
 
 		event.preventDefault();
