@@ -4,6 +4,7 @@ import com.dmoffat.dkpmanager.dao.GuildDao;
 import com.dmoffat.dkpmanager.dao.PlayerDao;
 import com.dmoffat.dkpmanager.dao.WowClassDao;
 import com.dmoffat.dkpmanager.model.Player;
+import com.dmoffat.dkpmanager.model.forms.LoginForm;
 import com.dmoffat.dkpmanager.model.forms.SignupForm;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,21 @@ public class PlayerService {
         player.setDkp(0d);
 
         playerDao.add(player);
+
+        return player;
+    }
+
+    public Player authenticate(LoginForm form) {
+        // Check email
+        Player player = playerDao.findByEmail(form.getEmail());
+        if(player == null) {
+            return null;
+        }
+
+        // Check password
+        if(!BCrypt.checkpw(form.getPassword(), player.getPassword())) {
+            return null;
+        }
 
         return player;
     }
