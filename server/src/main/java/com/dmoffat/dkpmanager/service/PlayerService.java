@@ -56,4 +56,7 @@ public class PlayerService {
         return player;
     }
 
+    public Player findByForgottenPasswordToken(String token) {
+        return playerDao.findByForgottenPasswordToken(token);
+    }
 }

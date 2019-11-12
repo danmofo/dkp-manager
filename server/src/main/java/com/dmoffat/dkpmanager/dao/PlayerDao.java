@@ -12,4 +12,11 @@ public class PlayerDao extends HibernateDao<Player, Integer> {
         query.setParameter("email", email);
         return getSingleResult(query);
     }
+
+    public Player findByForgottenPasswordToken(String token) {
+        Query query = entityManager().createQuery(
+                "from Player p where p.forgottenPasswordToken = :forgottenPasswordToken");
+        query.setParameter("forgottenPasswordToken", token);
+        return getSingleResult(query);
+    }
 }

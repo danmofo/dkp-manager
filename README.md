@@ -14,6 +14,7 @@ A website where users can register their guild and manage DKP in the game World 
 
 ## Up next...
 - Forgotten password
+	- todo: Send an email with the link in, implement the form which collects the new password, reset the token after password has changed. Talk about improvements to this system and flaws that it has.
 	- When a user created on the website, generate a token and store in the database
 	- Send a link with the token as a URL parameter
 	- User clicks link

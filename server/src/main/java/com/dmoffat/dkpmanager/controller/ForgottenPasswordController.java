@@ -5,6 +5,7 @@ import com.dmoffat.dkpmanager.model.forms.ForgottenPasswordForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
 import com.dmoffat.dkpmanager.service.ForgottenPasswordService;
+import com.dmoffat.dkpmanager.service.PlayerService;
 import com.dmoffat.dkpmanager.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -22,6 +23,7 @@ public class ForgottenPasswordController {
 
     @Autowired private ForgottenPasswordService forgottenPasswordService;
     @Autowired private MessageSource messageSource;
+    @Autowired private PlayerService playerService;
     @Autowired private SessionService sessionService;
 
     @GetMapping("forgotten-password")
@@ -50,8 +52,9 @@ public class ForgottenPasswordController {
 
     // /reset-password?token=<some random string we generate>
     @GetMapping("reset-password")
-    public String resetPassword(@RequestParam String token) {
-        // todo: create template.
+    public String resetPassword(@RequestParam(required = false) String token, Model m) {
+        m.addAttribute("player", playerService.findByForgottenPasswordToken(token));
+        m.addAttribute("token", token);
         return "reset-password";
     }
 }
