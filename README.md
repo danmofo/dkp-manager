@@ -13,12 +13,23 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Write a way to log in and log out
-- Replace client-side sessions with server-side sessions to avoid having to manually add cookies to the response in AJAX endpoints.
 - ...?
 
 ## Features/functions
 
+- Write a forgotten password feature
+	- Implement a third-party email service
+- Write a reset password feature
+- Allow users to change to details
+- Write some features for guild masters/people who manage DKP
+	- Award DKP to a specific player
+		- They need to log the items
+	- Decay DKP at fixed intervals
+	- Need a way to invite their guild members - invite mechanic, paste a link to someone
+- Write some pagination for pages which list items - guild list, dkp history page, players list page 
+- Sign the session cookies to prevent tampering
+- Make it look pretty 
+- Implement Webpack for managing JavaScript
 - Session system
 	1. Request comes in
 		- If cookie exists

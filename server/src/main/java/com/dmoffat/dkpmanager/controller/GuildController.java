@@ -22,7 +22,6 @@ public class GuildController {
 
     @GetMapping("guilds")
     public String list(@RequestAttribute Session session, Model m) {
-        session.addData("message", "Hello world!");
         logger.debug("Listing guilds...");
         m.addAttribute("guilds", guildService.list());
         return "list-guilds";
