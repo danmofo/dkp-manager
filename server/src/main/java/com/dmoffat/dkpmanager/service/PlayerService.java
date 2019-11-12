@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerService {
 
+    @Autowired private ForgottenPasswordService forgottenPasswordService;
     @Autowired private GuildDao guildDao;
     @Autowired private PlayerDao playerDao;
     @Autowired private WowClassDao wowClassDao;
@@ -32,6 +33,7 @@ public class PlayerService {
         player.setName(form.getCharacterName());
         player.setWowClass(wowClassDao.getProxy(form.getWowClassId()));
         player.setGuild(guildDao.getProxy(form.getGuildId()));
+        player.setForgottenPasswordToken(forgottenPasswordService.generateToken());
         player.setDkp(0d);
 
         playerDao.add(player);
