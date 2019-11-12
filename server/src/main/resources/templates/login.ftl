@@ -25,6 +25,7 @@
     </form>
 
     <p>If you don't have an account, you can <a href="/signup">Sign up here.</a></p>
+    <p>Forgotten your password? <a href="/forgotten-password">Reset your password</a></p>
 
 
     <script src="/validation-error-handler.js"></script>

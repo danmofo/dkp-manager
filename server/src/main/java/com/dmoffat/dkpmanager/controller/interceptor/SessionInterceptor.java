@@ -40,7 +40,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter  {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        logger.debug("SessionInterceptor#afterCompletion() - Request going out...");
+        logger.debug("SessionInterceptor#postHandle() - Request going out...");
         Session session = (Session)request.getAttribute("session");
 
         if(session.isChanged()) {

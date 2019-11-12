@@ -13,7 +13,14 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- ...?
+- Forgotten password
+	- When a user created on the website, generate a token and store in the database
+	- Send a link with the token as a URL parameter
+	- User clicks link
+	- Link contains a form with a password field
+	- User changes password
+	- Generate a new forgotten password token
+- Refactor javascript for AJAX-based form - create some common code that's shared between them.
 
 ## Features/functions
 
@@ -28,7 +35,8 @@ A website where users can register their guild and manage DKP in the game World 
 	- Need a way to invite their guild members - invite mechanic, paste a link to someone
 - Write some pagination for pages which list items - guild list, dkp history page, players list page 
 - Sign the session cookies to prevent tampering
-- Make it look pretty 
+- CSRF protection
+- Make it look pretty - add CSS to external file and maybe use SASS or something else.
 - Implement Webpack for managing JavaScript
 - Session system
 	1. Request comes in

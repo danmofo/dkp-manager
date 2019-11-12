@@ -28,6 +28,19 @@
 			.error {
 				color: red;
 			}
+
+			.alert {
+				display: inline-block;
+				padding: 15px 25px;
+				color: green;
+				margin-bottom: 15px;
+				border-radius: 3px;
+			}
+
+			.alert-success {
+				background-color: #d3f2d3;
+				border: 1px solid #87cd87;
+			}
 		</style>
 	</head>
 	<body>

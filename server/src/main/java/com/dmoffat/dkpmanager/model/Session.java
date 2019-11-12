@@ -19,6 +19,14 @@ public class Session {
         return this.data.get("playerId") != null;
     }
 
+    @JsonIgnore
+    public String getMessage() {
+        System.out.println("Getting message");
+        String message = (String)this.data.get("message");
+        removeData("message");
+        return message;
+    }
+
     public Session addData(String key, Object value) {
         Object existingValue = this.data.get(key);
         if(existingValue == null || !existingValue.equals(value)) {
@@ -29,6 +37,7 @@ public class Session {
     }
 
     public Session removeData(String key) {
+        System.out.println("Removing key: " + key);
         this.data.remove(key);
         this.changed = true;
         return this;
