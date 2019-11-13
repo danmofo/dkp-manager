@@ -3,6 +3,7 @@ package com.dmoffat.dkpmanager.service;
 import com.dmoffat.dkpmanager.model.Session;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Base64Utils;
 
@@ -18,7 +19,7 @@ import java.util.UUID;
 public class SessionService {
 
     // todo: Write bean
-    private ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired private ObjectMapper objectMapper;
 
     public String getCookieLabel() {
         return "SESSION";

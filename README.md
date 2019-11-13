@@ -14,13 +14,14 @@ A website where users can register their guild and manage DKP in the game World 
 
 ## Up next...
 - Forgotten password
-	- todo: Send an email with the link in, implement the form which collects the new password, reset the token after password has changed. Talk about improvements to this system and flaws that it has.
-	- When a user created on the website, generate a token and store in the database
-	- Send a link with the token as a URL parameter
-	- User clicks link
-	- Link contains a form with a password field
-	- User changes password
-	- Generate a new forgotten password token
+	- todo: implement the form which collects the new password, reset the token after password has changed. Talk about improvements to this system and flaws that it has.
+	- Process
+		- When a user created on the website, generate a token and store in the database
+		- Send a link with the token as a URL parameter
+		- User clicks link
+		- Link contains a form with a password field
+		- User changes password
+		- Generate a new forgotten password token
 - Refactor javascript for AJAX-based form - create some common code that's shared between them.
 
 ## Features/functions
@@ -39,6 +40,8 @@ A website where users can register their guild and manage DKP in the game World 
 - CSRF protection
 - Make it look pretty - add CSS to external file and maybe use SASS or something else.
 - Implement Webpack for managing JavaScript
+- Different configuration for different environments - production / dev
+- Domain name (replace localhost references with new domain) and SSL cert setup
 - Session system
 	1. Request comes in
 		- If cookie exists

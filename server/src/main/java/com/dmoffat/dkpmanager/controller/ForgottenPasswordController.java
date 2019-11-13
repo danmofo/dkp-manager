@@ -4,7 +4,9 @@ import com.dmoffat.dkpmanager.model.Session;
 import com.dmoffat.dkpmanager.model.forms.ForgottenPasswordForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
+import com.dmoffat.dkpmanager.service.EmailService;
 import com.dmoffat.dkpmanager.service.ForgottenPasswordService;
+import com.dmoffat.dkpmanager.service.ForgottenPasswordService.HandleResponse;
 import com.dmoffat.dkpmanager.service.PlayerService;
 import com.dmoffat.dkpmanager.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import java.util.Locale;
 @Controller
 public class ForgottenPasswordController {
 
+    @Autowired private EmailService emailService; // todo: remove me
     @Autowired private ForgottenPasswordService forgottenPasswordService;
     @Autowired private MessageSource messageSource;
     @Autowired private PlayerService playerService;
@@ -42,7 +45,11 @@ public class ForgottenPasswordController {
             return new JsonResponse(new ValidationErrors(result, messageSource));
         }
 
-        forgottenPasswordService.handle(forgottenPasswordForm);
+        HandleResponse response = forgottenPasswordService.handle(forgottenPasswordForm);
+        if(response == HandleResponse.EMAIL_NOT_SENT) {
+            result.rejectValue("email", "email-not-sent");
+            return new JsonResponse(new ValidationErrors(result, messageSource));
+        }
 
         session.addData("message", messageSource.getMessage("forgotten-password-email-sent", null, Locale.UK));
         resp.addCookie(sessionService.createSessionCookie(session));
