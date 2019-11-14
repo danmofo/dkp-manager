@@ -38,6 +38,7 @@ A website where users can register their guild and manage DKP in the game World 
 - Write some pagination for pages which list items - guild list, dkp history page, players list page 
 - Sign the session cookies to prevent tampering
 - CSRF protection
+- Expire forgotten password token after a set amount of time.
 - Make it look pretty - add CSS to external file and maybe use SASS or something else.
 - Implement Webpack for managing JavaScript
 - Different configuration for different environments - production / dev

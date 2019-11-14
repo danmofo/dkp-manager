@@ -59,4 +59,11 @@ public class PlayerService {
     public Player findByForgottenPasswordToken(String token) {
         return playerDao.findByForgottenPasswordToken(token);
     }
+
+    public void changePassword(Integer playerId, String password) {
+        Player player = playerDao.find(playerId);
+        player.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+        player.setForgottenPasswordToken(forgottenPasswordService.generateToken());
+        playerDao.update(player);
+    }
 }

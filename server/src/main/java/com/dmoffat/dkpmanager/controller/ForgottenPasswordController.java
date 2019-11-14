@@ -1,10 +1,11 @@
 package com.dmoffat.dkpmanager.controller;
 
+import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.Session;
 import com.dmoffat.dkpmanager.model.forms.ForgottenPasswordForm;
+import com.dmoffat.dkpmanager.model.forms.ResetPasswordForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
-import com.dmoffat.dkpmanager.service.EmailService;
 import com.dmoffat.dkpmanager.service.ForgottenPasswordService;
 import com.dmoffat.dkpmanager.service.ForgottenPasswordService.HandleResponse;
 import com.dmoffat.dkpmanager.service.PlayerService;
@@ -23,7 +24,6 @@ import java.util.Locale;
 @Controller
 public class ForgottenPasswordController {
 
-    @Autowired private EmailService emailService; // todo: remove me
     @Autowired private ForgottenPasswordService forgottenPasswordService;
     @Autowired private MessageSource messageSource;
     @Autowired private PlayerService playerService;
@@ -32,6 +32,7 @@ public class ForgottenPasswordController {
     @GetMapping("forgotten-password")
     public String forgottenPassword(Model m, @RequestAttribute Session session) {
         m.addAttribute("forgottenPasswordForm", new ForgottenPasswordForm());
+        // todo: Refactor this
         m.addAttribute("message", session.getMessage());
         return "forgotten-password";
     }
@@ -59,9 +60,34 @@ public class ForgottenPasswordController {
 
     // /reset-password?token=<some random string we generate>
     @GetMapping("reset-password")
-    public String resetPassword(@RequestParam(required = false) String token, Model m) {
-        m.addAttribute("player", playerService.findByForgottenPasswordToken(token));
+    public String resetPassword(@RequestParam(required = false) String token, Model m,
+                                @RequestAttribute Session session) {
+
+        Player player = playerService.findByForgottenPasswordToken(token);
+        if(player != null) {
+            session.addData("playerId", player.getId());
+        }
+
+        m.addAttribute("player", player);
         m.addAttribute("token", token);
+        m.addAttribute("resetPasswordForm", new ResetPasswordForm());
+
         return "reset-password";
+    }
+
+    @PostMapping("reset-password")
+    @ResponseBody
+    public JsonResponse handleResetPassword(@Valid ResetPasswordForm resetPasswordForm, BindingResult result,
+                                            @RequestAttribute Session session, HttpServletResponse resp) {
+
+        if(result.hasErrors()) {
+            return new JsonResponse(new ValidationErrors(result, messageSource));
+        }
+
+        playerService.changePassword(session.getPlayerId(), resetPasswordForm.getPassword());
+        session.addData("message", messageSource.getMessage("password-changed", null, Locale.UK));
+        resp.addCookie(sessionService.createSessionCookie(session));
+
+        return new JsonResponse(true).addPayload("redirectUrl", "/dashboard");
     }
 }

@@ -15,6 +15,15 @@ public class Session {
     }
 
     @JsonIgnore
+    public Integer getPlayerId() {
+        Object playerId = data.get("playerId");
+        if(playerId == null) {
+            return null;
+        }
+        return (Integer)playerId;
+    }
+
+    @JsonIgnore
     public boolean isLoggedIn() {
         return this.data.get("playerId") != null;
     }
@@ -49,4 +58,13 @@ public class Session {
     public void setData(Map<String, Object> data) { this.data = data; }
     public boolean isChanged() { return changed; }
     public void setChanged(boolean changed) { this.changed = changed; }
+
+    @Override
+    public String toString() {
+        return "Session{" +
+                "id='" + id + '\'' +
+                ", data=" + data +
+                ", changed=" + changed +
+                '}';
+    }
 }
