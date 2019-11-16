@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
 
 @Controller
-public class GuildController {
-
-    private static final Logger logger = LogManager.getLogger(GuildController.class);
+public class ViewGuildInfoController {
+    private static final Logger logger = LogManager.getLogger(ViewGuildInfoController.class);
 
     @Autowired
     private GuildService guildService;
