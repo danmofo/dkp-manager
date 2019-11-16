@@ -11,7 +11,6 @@ public class DashboardController {
 
     @GetMapping("dashboard")
     public String dashboard(Model m, @RequestAttribute Session session) {
-        m.addAttribute("message", session.getMessage());
         return "account/dashboard";
     }
 

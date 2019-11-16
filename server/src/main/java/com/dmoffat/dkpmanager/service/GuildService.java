@@ -2,6 +2,7 @@ package com.dmoffat.dkpmanager.service;
 
 import com.dmoffat.dkpmanager.dao.GuildDao;
 import com.dmoffat.dkpmanager.model.Guild;
+import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,11 @@ public class GuildService {
 
     public Guild findByUri(String guildUri) {
         return guildDao.findByUri(guildUri);
+    }
+
+    public void edit(Guild guild, EditGuildForm editGuildForm) {
+        guild.setName(editGuildForm.getName());
+        guild.setUri(editGuildForm.getUri());
+        guildDao.update(guild);
     }
 }

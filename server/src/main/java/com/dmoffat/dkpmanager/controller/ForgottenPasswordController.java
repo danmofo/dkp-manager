@@ -32,8 +32,6 @@ public class ForgottenPasswordController {
     @GetMapping("forgotten-password")
     public String forgottenPassword(Model m, @RequestAttribute Session session) {
         m.addAttribute("forgottenPasswordForm", new ForgottenPasswordForm());
-        // todo: Refactor this
-        m.addAttribute("message", session.getMessage());
         return "forgotten-password";
     }
 

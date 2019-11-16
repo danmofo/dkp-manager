@@ -3,6 +3,7 @@ package com.dmoffat.dkpmanager.model.forms;
 import org.springframework.context.MessageSource;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,17 @@ public class ValidationErrors {
     public ValidationErrors(BindingResult result, MessageSource messageSource) {
         this.hasErrors = result.hasErrors();
         this.errors = new ArrayList<>();
+
+        for(ObjectError error : result.getGlobalErrors()) {
+            System.out.println("Error codes: " + Arrays.toString(error.getCodes()));
+            String errorCode = result.getObjectName();
+            if(error.getCodes() != null && error.getCodes().length > 0) {
+                errorCode = error.getCodes()[0];
+            }
+            ValidationError validationError =
+                    new ValidationError(error.getObjectName(), messageSource.getMessage(errorCode, null, Locale.UK));
+            this.errors.add(validationError);
+        }
 
         for(FieldError error : result.getFieldErrors()) {
             System.out.println("Error codes: " + Arrays.toString(error.getCodes()));

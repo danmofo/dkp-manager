@@ -27,13 +27,18 @@ public class SessionInterceptor extends HandlerInterceptorAdapter  {
         logger.debug("SessionInterceptor#preHandle() - Request coming in..." + request.getRequestURI());
 
         Cookie sessionCookie = WebUtils.getCookie(request, sessionService.getCookieLabel());
+        Session session;
         if(sessionCookie == null) {
             logger.debug("No session found, creating a new one.");
-            request.setAttribute("session", sessionService.create());
+            session = sessionService.create();
+            request.setAttribute("session", session);
         } else {
             logger.debug("Session exists, loading it...");
-            request.setAttribute("session", sessionService.load(sessionCookie));
+            session = sessionService.load(sessionCookie);
+            request.setAttribute("session", session);
         }
+
+        request.setAttribute("message", session.getMessage());
 
         return true;
     }
