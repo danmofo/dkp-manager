@@ -13,20 +13,11 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Forgotten password
-	- Process
-		- When a user created on the website, generate a token and store in the database
-		- Send a link with the token as a URL parameter
-		- User clicks link
-		- Link contains a form with a password field
-		- User changes password
-		- Generate a new forgotten password token
-- Refactor javascript for AJAX-based form - create some common code that's shared between them.
+- ??
 
 ## Features/functions
 
 - Sign the session cookies to prevent tampering
-- Write a reset password feature
 - Allow users to change to details
 - Write some features for guild masters/people who manage DKP
 	- Award DKP to a specific player

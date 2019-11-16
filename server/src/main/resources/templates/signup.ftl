@@ -56,6 +56,7 @@
     </form>
 
 
+    <script src="/ajax-form.js"></script>
     <script src="/validation-error-handler.js"></script>
     <script src="/signup-form.js"></script>
 </@layout.general>
