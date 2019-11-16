@@ -1,6 +1,7 @@
 package com.dmoffat.dkpmanager.controller;
 
 import com.dmoffat.dkpmanager.model.Session;
+import com.dmoffat.dkpmanager.model.forms.AwardDkpForm;
 import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
@@ -48,8 +49,27 @@ public class GuildManagementController {
     }
 
     @GetMapping("award-dkp")
-    public String awardDkp() {
+    public String awardDkp(@RequestAttribute Session session, Model m) {
+        m.addAttribute("awardDkpForm", new AwardDkpForm());
+        m.addAttribute("guild", guildService.findById(session.getPlayer().getGuild().getId()));
         return "guild-management/award-dkp";
+    }
+
+    @PostMapping("award-dkp")
+    @ResponseBody
+    public JsonResponse handleAwardDkp(@Valid AwardDkpForm awardDkpForm, BindingResult result,
+                                       @RequestAttribute Session session, HttpServletResponse resp) {
+
+        if(result.hasErrors()) {
+            return new JsonResponse(new ValidationErrors(result, messageSource));
+        }
+
+        guildService.awardDkp(session.getPlayer().getGuild(), awardDkpForm);
+
+        session.addData("message", messageSource.getMessage("guild-award-dkp-success", null, Locale.UK));
+        resp.addCookie(sessionService.createSessionCookie(session));
+
+        return new JsonResponse(true).addPayload("redirectUrl", "/guild-management/award-dkp");
     }
 
     @GetMapping("decay-dkp")

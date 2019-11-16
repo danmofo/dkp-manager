@@ -56,7 +56,6 @@ public class ForgottenPasswordController {
         return new JsonResponse(true).addPayload("redirectUrl", "/forgotten-password");
     }
 
-    // /reset-password?token=<some random string we generate>
     @GetMapping("reset-password")
     public String resetPassword(@RequestParam(required = false) String token, Model m,
                                 @RequestAttribute Session session) {

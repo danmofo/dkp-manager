@@ -86,4 +86,8 @@ public class HibernateDao<E, K extends Serializable> {
             return null;
         }
     }
+
+    public List<E> getResultList(Query query) {
+        return (List<E>)query.getResultList();
+    }
 }

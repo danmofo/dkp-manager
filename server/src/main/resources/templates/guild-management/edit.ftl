@@ -11,7 +11,7 @@
         </div>
     </#if>
 
-	<form action="/guild-management/edit" class="js-edit-guild">
+	<form action="/guild-management/edit" class="js-edit-guild-form">
 		
 		<input type="hidden" name="currentUri" value="${guild.uri}" />
 
@@ -36,6 +36,6 @@
 
 	<script src="/ajax-form.js"></script>
 	<script src="/validation-error-handler.js"></script>
-	<script src="/edit-guild.js"></script>
+	<script src="/edit-guild-form.js"></script>
 
 </@layout.general>

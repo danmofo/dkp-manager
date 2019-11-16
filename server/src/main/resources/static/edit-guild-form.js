@@ -1,4 +1,4 @@
 new AjaxForm({
 	endpoint: '/guild-management/edit',
-	selector: '.js-edit-guild'
+	selector: '.js-edit-guild-form'
 });

@@ -10,6 +10,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlayerService {
 
@@ -65,5 +67,9 @@ public class PlayerService {
         player.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
         player.setForgottenPasswordToken(forgottenPasswordService.generateToken());
         playerDao.update(player);
+    }
+
+    public List<Player> findByGuildId(Integer guildId) {
+        return playerDao.findByGuildId(guildId);
     }
 }

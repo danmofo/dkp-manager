@@ -47,7 +47,15 @@
 		Is logged in? ${session.loggedIn?c}
 
 		<ul>
-			<li><a href="/">Homepage</a></li>
+			<#if session.loggedIn>
+				<li><a href="/dashboard">Dashboard</a></li>
+
+				<#if session.player.isGuildMaster>
+					<li><a href="/guild-management/">Guild management</a></li>
+				</#if>
+			<#else>
+				<li><a href="/">Homepage</a></li>
+			</#if>
 			<li><a href="/guilds">Guilds</a></li>
 			<li><a href="/about">About</a></li>
 			<li><a href="/contact">Contact</a></li>

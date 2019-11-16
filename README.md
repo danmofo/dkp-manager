@@ -13,13 +13,11 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- ??
+- Fixing generated SQL by modifying object mappings.
 
 ## Features/functions
 
 - Write some features for guild masters/people who manage DKP
-	- Award DKP to a specific player
-		- They need to log the items
 	- Decay DKP at fixed intervals
 	- Need a way to invite their guild members - invite mechanic, paste a link to someone
 - Sign the session cookies to prevent tampering
