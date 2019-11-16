@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class GuildMasterInterceptor extends HandlerInterceptorAdapter {
-    private static final Logger logger = LogManager.getLogger(GuildMasterInterceptor.class);
+public class GuildManagementInterceptor extends HandlerInterceptorAdapter {
+    private static final Logger logger = LogManager.getLogger(GuildManagementInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -23,6 +23,9 @@ public class GuildMasterInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect("/dashboard");
             return false;
         }
+
+        request.setAttribute("guild", player.getGuild());
+
         return true;
     }
 
