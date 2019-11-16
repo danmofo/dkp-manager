@@ -18,8 +18,8 @@ import java.util.UUID;
 @Service
 public class SessionService {
 
-    // todo: Write bean
     @Autowired private ObjectMapper objectMapper;
+    @Autowired private PlayerService playerService;
 
     public String getCookieLabel() {
         return "SESSION";
@@ -35,7 +35,11 @@ public class SessionService {
         String sessionData = cookie.getValue();
         try {
             String decoded = new String(Base64Utils.decodeFromUrlSafeString(sessionData));
-            return objectMapper.readValue(decoded, Session.class);
+            Session session = objectMapper.readValue(decoded, Session.class);
+            if(session.getPlayerId() != null) {
+                session.setPlayer(playerService.findById(session.getPlayerId()));
+            }
+            return session;
         } catch (IOException e) {
             e.printStackTrace();
             return null;

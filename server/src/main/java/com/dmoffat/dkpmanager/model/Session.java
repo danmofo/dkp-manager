@@ -9,6 +9,7 @@ public class Session {
     private String id;
     private Map<String, Object> data;
     @JsonIgnore private boolean changed = false;
+    @JsonIgnore private Player player;
 
     public Session() {
         this.data = new HashMap<>();
@@ -21,6 +22,16 @@ public class Session {
             return null;
         }
         return (Integer)playerId;
+    }
+
+    @JsonIgnore
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    @JsonIgnore
+    public Player getPlayer() {
+        return player;
     }
 
     @JsonIgnore

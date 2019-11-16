@@ -3,6 +3,8 @@
 
 <@layout.general>
     <h1>Dashboard</h1>
+	<p>Welcome back, ${session.player.name}</p>
+	<p>${session.player.isGuildMaster?c}</p>
 
     <#if message??>
         <div class="alert alert-success">
@@ -10,5 +12,4 @@
         </div>
     </#if>
 
-    <p>Only logged in users see this.</p>
 </@layout.general>

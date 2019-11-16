@@ -39,6 +39,9 @@ public class Player {
     @Column(name = "forgotten_password_token")
     private String forgottenPasswordToken;
 
+    @Column(name = "is_guild_master")
+    private Boolean isGuildMaster;
+
     @Column(name = "created")
     private LocalDateTime created;
 
@@ -63,6 +66,8 @@ public class Player {
     public void setPassword(String password) { this.password = password; }
     public String getForgottenPasswordToken() { return forgottenPasswordToken; }
     public void setForgottenPasswordToken(String forgottenPasswordToken) { this.forgottenPasswordToken = forgottenPasswordToken; }
+    public Boolean getIsGuildMaster() { return isGuildMaster; }
+    public void setIsGuildMaster(Boolean isGuildMaster) { this.isGuildMaster = isGuildMaster; }
     public LocalDateTime getCreated() { return created; }
     public void setCreated(LocalDateTime created) { this.created = created; }
     public LocalDateTime getUpdated() { return updated; }
@@ -75,6 +80,7 @@ public class Player {
                 ", name='" + name + '\'' +
                 ", dkp=" + dkp +
                 ", email=" + email +
+                ", guildMaster=" + isGuildMaster +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';
