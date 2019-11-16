@@ -9,9 +9,11 @@
 			<th>Date received</th>
 			<th>Amount</th>
 		</tr>
-		<tr>
-			<td>fdsajkjksdlf</td>
-			<td>100</td>
-		</tr>
+		<#list player.dkpHistory as historyItem>
+			<tr>
+				<td>${historyItem.created}</td>
+				<td>${historyItem.dkp}</td>
+			</tr>
+		</#list>
 	</table>
 </@layout.general>
