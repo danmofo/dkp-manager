@@ -58,8 +58,10 @@ public class Session {
 
     public Session removeData(String key) {
         System.out.println("Removing key: " + key);
-        this.data.remove(key);
-        this.changed = true;
+        Object removedValue = this.data.remove(key);
+        if(removedValue != null) {
+            this.changed = true;
+        }
         return this;
     }
 
