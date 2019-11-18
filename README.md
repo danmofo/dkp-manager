@@ -20,7 +20,6 @@ A website where users can register their guild and manage DKP in the game World 
 - Write some features for guild masters/people who manage DKP
 	- Decay DKP at fixed intervals
 	- Need a way to invite their guild members - invite mechanic, paste a link to someone
-- Sign the session cookies to prevent tampering
 - Allow users to change to details
 - Write some pagination for pages which list items - guild list, dkp history page, players list page 
 - CSRF protection

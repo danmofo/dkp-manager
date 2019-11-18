@@ -28,7 +28,6 @@ public class PlayerService {
      * @return The newly created Player.
      */
     public Player signup(SignupForm form) {
-
         Player player = new Player();
         player.setEmail(form.getEmail());
         player.setPassword(BCrypt.hashpw(form.getPassword(), BCrypt.gensalt()));
