@@ -1,4 +1,3 @@
-// todo: Make this code more resilient to changes in the DOM structure.
 class DecayDkpTable {
 
 	constructor() {
@@ -12,54 +11,61 @@ class DecayDkpTable {
 	}
 
 	onClickTable(event) {
+		const tableRow = getParentTableRowElement(event.target);
+
 		if(event.target.matches('.js-decay-dkp')) {
-			this.onClickDecayBtn(event.target);
+			this.onClickDecayBtn(tableRow);
 			return;
 		}
 
 		if(event.target.matches('.js-decay-dkp-cancel')) {
-			this.onClickCancelDecayBtn(event.target);
+			this.onClickCancelDecayBtn(tableRow);
 		}
 
 		if(event.target.matches('.js-decay-dkp-confirm')) {
-			this.onClickConfirmDecayBtn(event.target);
+			this.onClickConfirmDecayBtn(tableRow);
 			return;
 		}
 	}
 
-	onClickDecayBtn(decayBtn) {
+	onClickDecayBtn(tableRow) {
 		console.log('Clicked decay button.');
-		this.showDkpForm(decayBtn);
+		this.showDkpForm(tableRow);
 	}
 
-	showDkpForm(decayDkpBtn) {
-		decayDkpBtn.style.display = 'none';
-		decayDkpBtn.nextElementSibling.style.display = 'block';
+	showDkpForm(tableRow) {
+		const decayBtn = tableRow.querySelector('.js-decay-dkp');
+		const dkpForm = tableRow.querySelector('.js-decay-dkp-form');
+		decayBtn.style.display = 'none';
+		dkpForm.style.display = 'block';
 	}
 
-	onClickCancelDecayBtn(cancelBtn) {
+	onClickCancelDecayBtn(tableRow) {
 		console.log('Cancelling cancel DKP process.');
-		this.hideDkpForm(cancelBtn);
+		this.hideDkpForm(tableRow);
+		this.errorHandler.clearExistingErrors();
 	}
 
-	hideDkpForm(cancelBtn) {
-		const parentEl = cancelBtn.parentElement;
-		parentEl.style.display = 'none';
-		parentEl.previousElementSibling.style.display = 'block';
+	hideDkpForm(tableRow) {
+		const decayBtn = tableRow.querySelector('.js-decay-dkp');
+		const dkpForm = tableRow.querySelector('.js-decay-dkp-form');
+		dkpForm.style.display = 'none';
+		decayBtn.style.display = 'block';
 	}
 
-	getDecayDkpRequestData(confirmDkpBtn) {
-		const amountInput = confirmDkpBtn.previousElementSibling.previousElementSibling;
+	getDecayDkpRequestData(tableRow) {
+		const amountInput = tableRow.querySelector('.js-decay-dkp-amount');
+		const confirmDkpBtn = tableRow.querySelector('.js-decay-dkp-confirm');
 		return {
 			'amount': parseFloat(amountInput.value || 0),
 			'playerId': parseInt(confirmDkpBtn.dataset.playerId)
 		};
 	}
 
-	onClickConfirmDecayBtn(confirmDkpBtn) {
+	onClickConfirmDecayBtn(tableRow) {
 		console.log('Confirmed decay of DKP.');
 		this.errorHandler.clearExistingErrors();
-		const data = this.getDecayDkpRequestData(confirmDkpBtn);
+		const data = this.getDecayDkpRequestData(tableRow);
 		console.log(data);
 
 		this.sendDecayDkpRequest(data)
@@ -70,8 +76,8 @@ class DecayDkpTable {
 					return;
 				}
 
-				this.hideDkpForm(confirmDkpBtn.nextElementSibling);
-				this.updateDkpValue(confirmDkpBtn, json.payload.newDkpValue);
+				this.hideDkpForm(tableRow);
+				this.updateDkpValue(tableRow, json.payload.newDkpValue);
 			});
 	}
 
@@ -87,13 +93,31 @@ class DecayDkpTable {
 		});
 	}
 
-	updateDkpValue(confirmDkpBtn, newDkpValue) {
-		const formWrapper = confirmDkpBtn.parentElement;
-		const actionsCell = formWrapper.parentElement;
-		const dkpCell = actionsCell.previousElementSibling;
+	updateDkpValue(tableRow, newDkpValue) {
+		const dkpCell = tableRow.querySelector('.js-decay-dkp-amount-cell');
 		dkpCell.textContent = newDkpValue;
 	}
 
+}
+
+function getParentTableRowElement(el) {
+	if(isTableRow(el)) {
+		return el;
+	}
+
+	let parentEl = el.parentElement;
+	while(parentEl !== null) {
+		if(isTableRow(parentEl)) {
+			return parentEl;
+		}
+		parentEl = parentEl.parentElement;
+	}
+
+	return parentEl;
+}
+
+function isTableRow(el) {
+	return el.tagName.toLowerCase() === 'tr';
 }
 
 new DecayDkpTable();

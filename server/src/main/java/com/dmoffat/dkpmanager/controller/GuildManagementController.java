@@ -1,10 +1,8 @@
 package com.dmoffat.dkpmanager.controller;
 
 import com.dmoffat.dkpmanager.model.Session;
-import com.dmoffat.dkpmanager.model.forms.AwardDkpForm;
-import com.dmoffat.dkpmanager.model.forms.DecayDkpForm;
-import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
-import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
+import com.dmoffat.dkpmanager.model.UnitName;
+import com.dmoffat.dkpmanager.model.forms.*;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
 import com.dmoffat.dkpmanager.service.GuildService;
 import com.dmoffat.dkpmanager.service.SessionService;
@@ -77,6 +75,8 @@ public class GuildManagementController {
     @GetMapping("decay-dkp")
     public String decayDkp(Model m, @RequestAttribute Session session) {
         m.addAttribute("guild", guildService.findById(session.getPlayerGuildId()));
+        m.addAttribute("addDkpDecayIntervalForm", new AddDkpDecayIntervalForm());
+        m.addAttribute("dkpDecayIntervalUnitNames", UnitName.values());
         return "guild-management/decay-dkp";
     }
 
@@ -98,6 +98,21 @@ public class GuildManagementController {
         DecimalFormat format = new DecimalFormat("#,##0.##");
 
         return new JsonResponse(true).addPayload("newDkpValue", format.format(newDkpValue));
+    }
+
+    @PostMapping("add-decay-dkp-interval")
+    @ResponseBody
+    public JsonResponse handleAddDecayDkpInterval(@Valid AddDkpDecayIntervalForm addDkpDecayIntervalForm, BindingResult result,
+                                                  @RequestAttribute Session session) {
+
+        if(result.hasErrors()) {
+            return new JsonResponse(new ValidationErrors(result, messageSource));
+        }
+
+        guildService.addDecayDkpInterval(session.getPlayer().getGuild(), addDkpDecayIntervalForm);
+
+        return new JsonResponse(true)
+                .addPayload("redirectUrl", "/guild-management/decay-dkp");
     }
 
     @GetMapping("edit-dkp")

@@ -13,8 +13,10 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Refactor the decay DKP table JS
+- Create a Java 8 time type formatter for Freemarker templates.
 - Implement the fixed interval DKP delay function
+	- Add the actual decaying bit which runs daily.
+	- Add the ability to remove / edit them.
 - Write a function to decay DKP for the whole guild rather than single players.
 - Fixing generated SQL by modifying object mappings.
 

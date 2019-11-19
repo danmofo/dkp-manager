@@ -11,9 +11,12 @@ class ValidationErrorHandler {
 
 		validationResp.errors.forEach(error => {
 			console.log('Selector: ' + '.error_' + error.fieldName);
-			const errorEl = document.querySelector('.error_' + error.fieldName);
-			errorEl.innerText = error.message;
-			errorEl.style.display = 'block';
+			const errorElements = document.querySelectorAll('.error_' + error.fieldName);
+
+			errorElements.forEach(errorEl => {
+				errorEl.innerText = error.message;
+				errorEl.style.display = 'block';
+			});
 		});
 	}
 

@@ -1,18 +1,23 @@
 package com.dmoffat.dkpmanager.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "guild")
-public class Guild {
+public class Guild implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String uri;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private DkpDecayInterval dkpDecayInterval;
 
     @OneToMany(mappedBy = "guild")
     private List<Player> players;
@@ -32,6 +37,8 @@ public class Guild {
     public void setCreated(LocalDateTime created) { this.created = created; }
     public LocalDateTime getUpdated() { return updated; }
     public void setUpdated(LocalDateTime updated) { this.updated = updated; }
+    public DkpDecayInterval getDkpDecayInterval() { return dkpDecayInterval; }
+    public void setDkpDecayInterval(DkpDecayInterval dkpDecayInterval) { this.dkpDecayInterval = dkpDecayInterval; }
 
     @Override
     public String toString() {

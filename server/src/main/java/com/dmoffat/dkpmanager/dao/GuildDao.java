@@ -12,6 +12,7 @@ public class GuildDao extends HibernateDao<Guild, Integer> {
     public Guild find(Integer primaryKey) {
         Query query = entityManager().createQuery(
                 "from Guild g " +
+                "left join fetch g.dkpDecayInterval " +
                 "left join fetch g.players " +
                 "where g.id = :guildId");
         query.setParameter("guildId", primaryKey);

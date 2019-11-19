@@ -10,6 +10,7 @@ drop table if exists dkp_manager.guild;
 drop table if exists dkp_manager.class;
 drop table if exists dkp_manager.player;
 drop table if exists dkp_manager.dkp_history;
+drop table if exists dkp_manager.dkp_decay_interval;
 set foreign_key_checks=1;
 
 create table guild (
@@ -50,6 +51,17 @@ create table dkp_history (
 	created timestamp not null default current_timestamp,
 	-- add created column for when it was awarded.
 	foreign key(player_id) references player(id)
+);
+
+create table dkp_decay_interval (
+	guild_id int primary key,
+	unit_name varchar(255) not null, -- hours, weeks, days, years
+	unit_value int,
+	dkp decimal(15, 5) not null default 0.00000,
+	next_occurrence date not null,
+	created timestamp not null default current_timestamp,
+	updated timestamp null on update current_timestamp,
+	foreign key(guild_id) references guild(id)
 );
 
 -- Create dummy data
