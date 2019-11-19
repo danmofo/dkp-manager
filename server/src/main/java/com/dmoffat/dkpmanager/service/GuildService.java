@@ -7,6 +7,7 @@ import com.dmoffat.dkpmanager.model.DkpHistory;
 import com.dmoffat.dkpmanager.model.Guild;
 import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.forms.AwardDkpForm;
+import com.dmoffat.dkpmanager.model.forms.DecayDkpForm;
 import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -66,5 +67,28 @@ public class GuildService {
             playerDao.update(player);
             logger.debug("Updated player summary column.");
         }
+    }
+
+    /**
+     * @return The players new DKP value.
+     */
+    @Transactional
+    public Double decayDkp(Player editor, DecayDkpForm decayDkpForm) {
+        Player player = playerService.findById(decayDkpForm.getPlayerId());
+
+        if(!player.getGuild().getId().equals(editor.getGuild().getId())) {
+            logger.warn("User tried to edit DKP for a player who doesn't belong to their guild.");
+            return null;
+        }
+
+        DkpHistory dkpHistory = new DkpHistory();
+        dkpHistory.setPlayer(player);
+        dkpHistory.setDkp(-decayDkpForm.getAmount());
+        dkpHistoryDao.add(dkpHistory);
+
+        player.setDkp(player.getDkp() - decayDkpForm.getAmount());
+        playerDao.update(player);
+
+        return player.getDkp();
     }
 }

@@ -16,6 +16,18 @@ public class Session {
     }
 
     @JsonIgnore
+    public Integer getPlayerGuildId() {
+        if(player == null) {
+            return null;
+        }
+        Guild guild = player.getGuild();
+        if(guild == null) {
+            return null;
+        }
+        return guild.getId();
+    }
+
+    @JsonIgnore
     public Integer getPlayerId() {
         Object playerId = data.get("playerId");
         if(playerId == null) {

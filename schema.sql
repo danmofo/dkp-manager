@@ -31,7 +31,7 @@ create table player (
 	guild_id int not null,
 	class_id varchar(255) not null,
 	name varchar(255) not null,
-	dkp decimal not null default 0.00,
+	dkp decimal(15, 5) not null default 0.00000,
 	email varchar(255) not null unique,
 	password varchar(255) not null,
 	is_guild_master boolean default 0,
@@ -46,7 +46,7 @@ create table player (
 create table dkp_history (
 	id int primary key auto_increment,
 	player_id int not null,
-	dkp decimal not null default 0.00,
+	dkp decimal(15, 5) not null default 0.00000,
 	created timestamp not null default current_timestamp,
 	-- add created column for when it was awarded.
 	foreign key(player_id) references player(id)

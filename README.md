@@ -13,6 +13,9 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
+- Refactor the decay DKP table JS
+- Implement the fixed interval DKP delay function
+- Write a function to decay DKP for the whole guild rather than single players.
 - Fixing generated SQL by modifying object mappings.
 
 ## Features/functions

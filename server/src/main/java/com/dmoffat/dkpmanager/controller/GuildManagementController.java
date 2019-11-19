@@ -2,6 +2,7 @@ package com.dmoffat.dkpmanager.controller;
 
 import com.dmoffat.dkpmanager.model.Session;
 import com.dmoffat.dkpmanager.model.forms.AwardDkpForm;
+import com.dmoffat.dkpmanager.model.forms.DecayDkpForm;
 import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
 import com.dmoffat.dkpmanager.model.forms.ValidationErrors;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.text.DecimalFormat;
 import java.util.Locale;
 
 @Controller
@@ -51,7 +53,7 @@ public class GuildManagementController {
     @GetMapping("award-dkp")
     public String awardDkp(@RequestAttribute Session session, Model m) {
         m.addAttribute("awardDkpForm", new AwardDkpForm());
-        m.addAttribute("guild", guildService.findById(session.getPlayer().getGuild().getId()));
+        m.addAttribute("guild", guildService.findById(session.getPlayerGuildId()));
         return "guild-management/award-dkp";
     }
 
@@ -73,8 +75,29 @@ public class GuildManagementController {
     }
 
     @GetMapping("decay-dkp")
-    public String decayDkp() {
+    public String decayDkp(Model m, @RequestAttribute Session session) {
+        m.addAttribute("guild", guildService.findById(session.getPlayerGuildId()));
         return "guild-management/decay-dkp";
+    }
+
+    @PostMapping("decay-dkp")
+    @ResponseBody
+    public JsonResponse handleDecayDkp(@RequestBody @Valid DecayDkpForm decayDkpForm, BindingResult result,
+                                       @RequestAttribute Session session) {
+
+        if(result.hasErrors()) {
+            return new JsonResponse(new ValidationErrors(result, messageSource));
+        }
+
+        Double newDkpValue = guildService.decayDkp(session.getPlayer(), decayDkpForm);
+        if(newDkpValue == null) {
+            result.rejectValue("amount", "guild-decay-dkp-not-allowed");
+            return new JsonResponse(new ValidationErrors(result, messageSource));
+        }
+
+        DecimalFormat format = new DecimalFormat("#,##0.##");
+
+        return new JsonResponse(true).addPayload("newDkpValue", format.format(newDkpValue));
     }
 
     @GetMapping("edit-dkp")
