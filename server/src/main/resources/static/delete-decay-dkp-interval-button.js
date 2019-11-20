@@ -1,7 +1,7 @@
 class DeleteDecayDkpIntervalButton {
 
 	constructor() {
-		this.button = document.querySelector('.js-delete-decay-dkp-interval');
+		this.button = document.querySelector('.js-delete-decay-dkp-interval-btn');
 		this.bindEvents();
 	}
 

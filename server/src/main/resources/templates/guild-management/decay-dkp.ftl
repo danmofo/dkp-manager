@@ -45,8 +45,8 @@
 				<li><strong>Decay amount: </strong> ${guild.dkpDecayInterval.dkp}</li>
 				<li><strong>Next decay occurs: </strong> ${guild.dkpDecayInterval.nextOccurrence}</li>
 			</ul>
-			<button>Edit</button>
-			<button class="js-delete-decay-dkp-interval">Delete</button>
+			<button class="js-delete-decay-dkp-interval-btn">Delete</button>
+			<p>To edit this, delete it and create a new one.</p>
 		<#else>
 			<form action="/guild-management/add-decay-dkp-interval" class="js-add-decay-dkp-interval-form">
 				
