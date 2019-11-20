@@ -5,6 +5,12 @@ class AjaxForm {
 		this.validateOptions();
 
 		this.form = document.querySelector(this.options.selector);
+
+		if(!this.form) {
+			console.log(`No form found on the page with the selector: '${this.options.selector}'`)
+			return;
+		}
+
 		this.errorHandler = new ValidationErrorHandler();
 		this.bindEvents();
 	}

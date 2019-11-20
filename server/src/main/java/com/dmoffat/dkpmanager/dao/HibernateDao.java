@@ -40,6 +40,9 @@ public class HibernateDao<E, K extends Serializable> {
     }
 
     public void remove(E entity) {
+        if(!entityManager().contains(entity)) {
+            entity = entityManager().merge(entity);
+        }
         entityManager.remove(entity);
     }
 

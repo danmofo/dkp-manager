@@ -115,6 +115,15 @@ public class GuildManagementController {
                 .addPayload("redirectUrl", "/guild-management/decay-dkp");
     }
 
+    @PostMapping("delete-decay-dkp-interval")
+    @ResponseBody
+    public JsonResponse handleDeleteDecayDkpInterval(@RequestAttribute Session session) {
+
+        guildService.deleteDkpDecayInterval(session.getPlayer().getGuild());
+
+        return new JsonResponse(true);
+    }
+
     @GetMapping("edit-dkp")
     public String editDkp() {
         return "guild-management/edit-dkp";

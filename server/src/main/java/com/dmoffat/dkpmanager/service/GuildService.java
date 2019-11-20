@@ -122,4 +122,9 @@ public class GuildService {
         }
         return nextOccurrence;
     }
+
+    public void deleteDkpDecayInterval(Guild guildToDeleteFrom) {
+        DkpDecayInterval interval = dkpDecayIntervalDao.find(guildToDeleteFrom.getId());
+        dkpDecayIntervalDao.remove(interval);
+    }
 }
