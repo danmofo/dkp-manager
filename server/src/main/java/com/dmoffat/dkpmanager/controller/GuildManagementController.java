@@ -4,6 +4,7 @@ import com.dmoffat.dkpmanager.model.Session;
 import com.dmoffat.dkpmanager.model.UnitName;
 import com.dmoffat.dkpmanager.model.forms.*;
 import com.dmoffat.dkpmanager.model.json.JsonResponse;
+import com.dmoffat.dkpmanager.service.DkpDecayIntervalService;
 import com.dmoffat.dkpmanager.service.GuildService;
 import com.dmoffat.dkpmanager.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import java.util.Locale;
 @RequestMapping("/guild-management/")
 public class GuildManagementController {
 
+    @Autowired private DkpDecayIntervalService dkpDecayIntervalService;
     @Autowired private GuildService guildService;
     @Autowired private MessageSource messageSource;
     @Autowired private SessionService sessionService;
@@ -109,7 +111,7 @@ public class GuildManagementController {
             return new JsonResponse(new ValidationErrors(result, messageSource));
         }
 
-        guildService.addDecayDkpInterval(session.getPlayer().getGuild(), addDkpDecayIntervalForm);
+        dkpDecayIntervalService.addDecayDkpInterval(session.getPlayer().getGuild(), addDkpDecayIntervalForm);
 
         return new JsonResponse(true)
                 .addPayload("redirectUrl", "/guild-management/decay-dkp");
@@ -119,7 +121,7 @@ public class GuildManagementController {
     @ResponseBody
     public JsonResponse handleDeleteDecayDkpInterval(@RequestAttribute Session session) {
 
-        guildService.deleteDkpDecayInterval(session.getPlayer().getGuild());
+        dkpDecayIntervalService.deleteDkpDecayInterval(session.getPlayer().getGuild());
 
         return new JsonResponse(true);
     }

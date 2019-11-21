@@ -4,8 +4,9 @@ import com.dmoffat.dkpmanager.dao.DkpDecayIntervalDao;
 import com.dmoffat.dkpmanager.dao.DkpHistoryDao;
 import com.dmoffat.dkpmanager.dao.GuildDao;
 import com.dmoffat.dkpmanager.dao.PlayerDao;
-import com.dmoffat.dkpmanager.model.*;
-import com.dmoffat.dkpmanager.model.forms.AddDkpDecayIntervalForm;
+import com.dmoffat.dkpmanager.model.DkpHistory;
+import com.dmoffat.dkpmanager.model.Guild;
+import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.forms.AwardDkpForm;
 import com.dmoffat.dkpmanager.model.forms.DecayDkpForm;
 import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
@@ -15,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -83,48 +83,18 @@ public class GuildService {
             return null;
         }
 
+        return decayDkp(player, decayDkpForm.getAmount());
+    }
+
+    private Double decayDkp(Player player, Double amount) {
         DkpHistory dkpHistory = new DkpHistory();
         dkpHistory.setPlayer(player);
-        dkpHistory.setDkp(-decayDkpForm.getAmount());
+        dkpHistory.setDkp(-amount);
         dkpHistoryDao.add(dkpHistory);
 
-        player.setDkp(player.getDkp() - decayDkpForm.getAmount());
+        player.setDkp(player.getDkp() - amount);
         playerDao.update(player);
 
         return player.getDkp();
-    }
-
-    public void addDecayDkpInterval(Guild guildToAddTo, AddDkpDecayIntervalForm form) {
-        DkpDecayInterval dkpDecayInterval = new DkpDecayInterval();
-        dkpDecayInterval.setGuildId(guildToAddTo.getId());
-        dkpDecayInterval.setUnitName(form.getUnitName());
-        dkpDecayInterval.setUnitValue(form.getUnitValue());
-        dkpDecayInterval.setDkp(form.getDkp());
-        dkpDecayInterval.setNextOccurrence(getNextDkpDecayDate(form.getUnitName(), form.getUnitValue()));
-        dkpDecayIntervalDao.add(dkpDecayInterval);
-    }
-
-    private LocalDate getNextDkpDecayDate(UnitName unitName, Integer unitValue) {
-        LocalDate nextOccurrence = LocalDate.now();
-        switch(unitName) {
-            case DAYS:
-                nextOccurrence = nextOccurrence.plusDays(unitValue);
-                break;
-            case WEEKS:
-                nextOccurrence = nextOccurrence.plusWeeks(unitValue);
-                break;
-            case MONTHS:
-                nextOccurrence = nextOccurrence.plusMonths(unitValue);
-                break;
-            case YEARS:
-                nextOccurrence = nextOccurrence.plusYears(unitValue);
-                break;
-        }
-        return nextOccurrence;
-    }
-
-    public void deleteDkpDecayInterval(Guild guildToDeleteFrom) {
-        DkpDecayInterval interval = dkpDecayIntervalDao.find(guildToDeleteFrom.getId());
-        dkpDecayIntervalDao.remove(interval);
     }
 }
