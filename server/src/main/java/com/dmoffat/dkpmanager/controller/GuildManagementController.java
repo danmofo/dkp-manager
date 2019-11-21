@@ -102,7 +102,7 @@ public class GuildManagementController {
         return new JsonResponse(true).addPayload("newDkpValue", format.format(newDkpValue));
     }
 
-    @PostMapping("add-decay-dkp-interval")
+    @PostMapping("add-dkp-decay-interval")
     @ResponseBody
     public JsonResponse handleAddDecayDkpInterval(@Valid AddDkpDecayIntervalForm addDkpDecayIntervalForm, BindingResult result,
                                                   @RequestAttribute Session session) {
@@ -117,7 +117,7 @@ public class GuildManagementController {
                 .addPayload("redirectUrl", "/guild-management/decay-dkp");
     }
 
-    @PostMapping("delete-decay-dkp-interval")
+    @PostMapping("delete-dkp-decay-interval")
     @ResponseBody
     public JsonResponse handleDeleteDecayDkpInterval(@RequestAttribute Session session) {
 

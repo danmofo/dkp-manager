@@ -13,8 +13,6 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Set up http://carnackeys.com/
-- Rename the DKP decay interval stuff, the naming is inconsistent!
 - Create a Java 8 time type formatter for Freemarker templates.
 - Implement the fixed interval DKP delay function
 	- Add the ability to remove / edit them.
@@ -38,6 +36,7 @@ A website where users can register their guild and manage DKP in the game World 
 - Different configuration for different environments - production / dev
 - Domain name (replace localhost references with new domain) and SSL cert setup
 - Add the ability to edit a DKP decay interval.
+- Add the ability to decay DKP at intervals using percentages rather than fixed numbers.
 
 ## Development
 

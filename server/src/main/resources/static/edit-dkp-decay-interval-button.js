@@ -1,7 +1,7 @@
 class EditDecayDkpIntervalButton {
 
 	constructor() {
-		this.button = document.querySelector('.js-edit-decay-dkp-interval-btn');
+		this.button = document.querySelector('.js-edit-dkp-decay-interval-btn');
 		this.bindEvents();
 	}
 

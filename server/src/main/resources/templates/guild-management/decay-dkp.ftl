@@ -45,10 +45,10 @@
 				<li><strong>Decay amount: </strong> ${guild.dkpDecayInterval.dkp}</li>
 				<li><strong>Next decay occurs: </strong> ${guild.dkpDecayInterval.nextOccurrence}</li>
 			</ul>
-			<button class="js-delete-decay-dkp-interval-btn">Delete</button>
+			<button class="js-delete-dkp-decay-interval-btn">Delete</button>
 			<p>To edit this, delete it and create a new one.</p>
 		<#else>
-			<form action="/guild-management/add-decay-dkp-interval" class="js-add-decay-dkp-interval-form">
+			<form action="/guild-management/add-dkp-decay-interval" class="js-add-dkp-decay-interval-form">
 				
 				<div class="form-group">
 				    <@spring.bind "addDkpDecayIntervalForm.unitName" />
@@ -81,6 +81,7 @@
 				    <p>The first decay will happen on this date. If not specified, the first decay will occur after the interval you specfied. E.g. If you entered one day,
 				     the first decay would happen tomorrow.</p>
 				    <input type="date" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
+				    <span class="error error_${spring.status.expression}"></span>
 				</div>
 
 				<input type="submit" value="Add" />
@@ -93,10 +94,10 @@
 	<script src="/ajax-form.js"></script>
 	<script src="/validation-error-handler.js"></script>
 	<script src="/decay-dkp-table.js"></script>
-	<script src="/add-decay-dkp-interval-form.js"></script>
+	<script src="/add-dkp-decay-interval-form.js"></script>
 
 	<#if guild.dkpDecayInterval??>
-		<script src="/delete-decay-dkp-interval-button.js"></script>
+		<script src="/delete-dkp-decay-interval-button.js"></script>
 	</#if>
 
 </@layout.general>

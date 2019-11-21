@@ -3,6 +3,7 @@ package com.dmoffat.dkpmanager.model.forms;
 import com.dmoffat.dkpmanager.model.UnitName;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ public class AddDkpDecayIntervalForm {
     @NotNull
     private Double dkp;
 
+    @FutureOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
 

@@ -1,7 +1,7 @@
 class DeleteDecayDkpIntervalButton {
 
 	constructor() {
-		this.button = document.querySelector('.js-delete-decay-dkp-interval-btn');
+		this.button = document.querySelector('.js-delete-dkp-decay-interval-btn');
 		this.bindEvents();
 	}
 
@@ -12,7 +12,7 @@ class DeleteDecayDkpIntervalButton {
 	onClick(event) {
 		console.log('Button clicked!');
 
-		fetch('/guild-management/delete-decay-dkp-interval', {
+		fetch('/guild-management/delete-dkp-decay-interval', {
 			method: 'POST'
 		}).then(resp => {
 			return resp.json()
