@@ -75,6 +75,14 @@
 				    <span class="error error_${spring.status.expression}"></span>
 				</div>
 
+				<div class="form-group">
+				    <@spring.bind "addDkpDecayIntervalForm.startDate" />
+				    <label for=" ${spring.status.expression}">Start Date</label>
+				    <p>The first decay will happen on this date. If not specified, the first decay will occur after the interval you specfied. E.g. If you entered one day,
+				     the first decay would happen tomorrow.</p>
+				    <input type="date" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
+				</div>
+
 				<input type="submit" value="Add" />
 
 			</form>

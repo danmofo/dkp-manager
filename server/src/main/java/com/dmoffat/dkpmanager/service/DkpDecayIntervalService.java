@@ -67,7 +67,15 @@ public class DkpDecayIntervalService {
         dkpDecayInterval.setUnitName(form.getUnitName());
         dkpDecayInterval.setUnitValue(form.getUnitValue());
         dkpDecayInterval.setDkp(form.getDkp());
-        dkpDecayInterval.setNextOccurrence(getNextDkpDecayDate(form.getUnitName(), form.getUnitValue()));
+
+        // Set the start date to the value they entered in the form, or if nothing was entered, start from the interval
+        // they specified.
+        if(form.getStartDate() == null) {
+            dkpDecayInterval.setNextOccurrence(getNextDkpDecayDate(form.getUnitName(), form.getUnitValue()));
+        } else {
+            dkpDecayInterval.setNextOccurrence(form.getStartDate());
+        }
+
         dkpDecayIntervalDao.add(dkpDecayInterval);
     }
 
