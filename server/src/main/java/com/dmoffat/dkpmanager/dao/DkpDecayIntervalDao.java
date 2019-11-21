@@ -25,13 +25,14 @@ public class DkpDecayIntervalDao extends HibernateDao<DkpDecayInterval, Integer>
      * tables.
      */
     public void applyToPlayers(LocalDate date) {
-        // todo
-
-        /**
-         * select *
-         * from dkp_decay_interval
-         * where next_occurrence
-         */
+        Query query = entityManager().createNativeQuery(
+            "update player p " +
+            "join guild g on g.id = p.guild_id " +
+            "join dkp_decay_interval i on i.guild_id = g.id " +
+            "set p.dkp = p.dkp - i.dkp " +
+            "where i.next_occurrence = :date");
+        query.setParameter("date", date);
+        query.executeUpdate();
     }
 
 }

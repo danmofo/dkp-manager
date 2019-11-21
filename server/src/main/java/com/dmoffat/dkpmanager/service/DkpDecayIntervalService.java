@@ -33,6 +33,10 @@ public class DkpDecayIntervalService {
         List<DkpDecayInterval> decays = dkpDecayIntervalDao.findDueDecays(LocalDate.now());
         logger.debug("Found " + decays.size() + " decays that need to be applied.");
 
+        // Reduce each players DKP in the guild by the specified amount - could've been done in the loop below, but it's
+        // more efficient to do these with one query..
+        dkpDecayIntervalDao.applyToPlayers(LocalDate.now());
+
         // Apply the decays to each player in the guild
         logger.debug("Applying decays to each guild..");
         for(DkpDecayInterval decay : decays) {
@@ -55,10 +59,6 @@ public class DkpDecayIntervalService {
             decay.setNextOccurrence(nextOccurrence);
             dkpDecayIntervalDao.update(decay);
         }
-
-        // Reduce each players DKP in the guild by the specified amount - could've been done in the loop above, but it's
-        // more efficient to do these with one query..
-        dkpDecayIntervalDao.applyToPlayers(LocalDate.now());
     }
 
     public void addDecayDkpInterval(Guild guildToAddTo, AddDkpDecayIntervalForm form) {

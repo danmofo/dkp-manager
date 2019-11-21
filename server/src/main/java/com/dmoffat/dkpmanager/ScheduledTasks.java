@@ -1,6 +1,5 @@
 package com.dmoffat.dkpmanager;
 
-
 import com.dmoffat.dkpmanager.service.DkpDecayIntervalService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,10 +13,10 @@ public class ScheduledTasks {
 
     @Autowired private DkpDecayIntervalService dkpDecayIntervalService;
 
-    @Scheduled(cron = "0 */3 * * * *")
+    @Scheduled(cron = "0 */1 * * * *")
     public void applyDkpDecay() {
         logger.debug("Running scheduled task: applyDkpDecay()");
-//        dkpDecayIntervalService.processDkpDecay();
+        dkpDecayIntervalService.processDkpDecay();
     }
 
 }
