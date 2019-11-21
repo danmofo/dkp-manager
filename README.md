@@ -13,19 +13,12 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Create a Java 8 time type formatter for Freemarker templates.
-- Implement the fixed interval DKP delay function
-	- Add the ability to remove / edit them.
-	- Add the actual decaying bit which runs daily.
-		- cron job
-		-
 - Write a function to decay DKP for the whole guild rather than single players.
 - Fixing generated SQL by modifying object mappings.
 
 ## Features/functions
 
 - Write some features for guild masters/people who manage DKP
-	- Decay DKP at fixed intervals
 	- Need a way to invite their guild members - invite mechanic, paste a link to someone
 - Allow users to change to details
 - Write some pagination for pages which list items - guild list, dkp history page, players list page 

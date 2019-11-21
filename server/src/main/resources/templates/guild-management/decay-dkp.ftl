@@ -43,7 +43,8 @@
 			<p>Your existing interval information:</p>
 			<ul>
 				<li><strong>Decay amount: </strong> ${guild.dkpDecayInterval.dkp}</li>
-				<li><strong>Next decay occurs: </strong> ${guild.dkpDecayInterval.nextOccurrence}</li>
+				<li><strong>Next decay occurs: </strong> ${timeUtils.format(guild.dkpDecayInterval.nextOccurrence)}</li>
+				<li><strong>Interval: </strong> DKP will be decayed every <strong>${guild.dkpDecayInterval.unitValue} ${guild.dkpDecayInterval.unitName}</strong></li>
 			</ul>
 			<button class="js-delete-dkp-decay-interval-btn">Delete</button>
 			<p>To edit this, delete it and create a new one.</p>
