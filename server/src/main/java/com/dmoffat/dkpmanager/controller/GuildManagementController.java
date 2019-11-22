@@ -125,10 +125,5 @@ public class GuildManagementController {
 
         return new JsonResponse(true);
     }
-
-    @GetMapping("edit-dkp")
-    public String editDkp() {
-        return "guild-management/edit-dkp";
-    }
-
+    
 }

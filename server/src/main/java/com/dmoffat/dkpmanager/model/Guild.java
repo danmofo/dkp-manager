@@ -22,6 +22,7 @@ public class Guild implements Serializable {
     @OneToMany(mappedBy = "guild")
     private List<Player> players;
 
+    private String inviteCode;
     private LocalDateTime created;
     private LocalDateTime updated;
 
@@ -39,6 +40,8 @@ public class Guild implements Serializable {
     public void setUpdated(LocalDateTime updated) { this.updated = updated; }
     public DkpDecayInterval getDkpDecayInterval() { return dkpDecayInterval; }
     public void setDkpDecayInterval(DkpDecayInterval dkpDecayInterval) { this.dkpDecayInterval = dkpDecayInterval; }
+    public String getInviteCode() { return inviteCode; }
+    public void setInviteCode(String inviteCode) { this.inviteCode = inviteCode; }
 
     @Override
     public String toString() {
@@ -46,6 +49,7 @@ public class Guild implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", uri='" + uri + '\'' +
+                ", inviteCode='" + inviteCode + '\'' +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';

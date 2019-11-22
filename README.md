@@ -13,24 +13,26 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
+- Allow users to change to details
+- Add a 404 page for when pages can't be found. Show the template that couldn't be found.
+- Add a 5xx page for when pages throw an error, and in development, print the stack trace to the webpage.
+- Write some pagination for pages which list items - guild list, dkp history page, players list page 
+- Implement Webpack for managing JavaScript
+- Make it look pretty - add CSS to external file and maybe use SASS or something else.
+	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.
 
 ## Features/functions
 
 - Fixing generated SQL by modifying object mappings.
-- Write some features for guild masters/people who manage DKP
-	- Need a way to invite their guild members - invite mechanic, paste a link to someone
-- Allow users to change to details
-- Write some pagination for pages which list items - guild list, dkp history page, players list page 
 - CSRF protection
 - Expire forgotten password token after a set amount of time.
-- Make it look pretty - add CSS to external file and maybe use SASS or something else.
-- Implement Webpack for managing JavaScript
 - Different configuration for different environments - production / dev
 - Domain name (replace localhost references with new domain) and SSL cert setup
 - Add the ability to edit a DKP decay interval.
 - Add the ability to decay DKP at intervals using percentages rather than fixed numbers.
 - Automated tests?!?!
 - Manually edit a players DKP
+- need a way to specify guild ownership when signing up...how do other websites do this? Maybe some blizzard API that can read guild metadata or players in a guild?
 
 ## Development
 

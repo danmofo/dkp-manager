@@ -4,6 +4,10 @@
 <@layout.general>
     <h1>Sign up</h1>
 
+    <#if inviteCode?has_content>
+        <h2>You have been invited to join the guild ${guild.name}</h2>
+    </#if>
+
     <form action="/signup" method="POST" class="js-signup-form">
 
         <h2>Information about your WoW character</h2>
@@ -17,12 +21,17 @@
         <div class="form-group">
             <@spring.bind "signupForm.guildId" />
             <label for=" ${spring.status.expression}">Guild name</label>
-            <select name="${spring.status.expression}" id="${spring.status.expression}">
-                <#list guilds as guild>
-                    <option value="${guild.id}">${guild.name}</option>
-                </#list>
-            </select>
-            <span class="error error_${spring.status.expression}"></span>
+            <#if inviteCode?has_content>
+                <p>${guild.name}</p>
+                <input type="hidden" name="${spring.status.expression}" value="${guild.id}" />
+            <#else>
+                <select name="${spring.status.expression}" id="${spring.status.expression}">
+                    <#list guilds as guild>
+                        <option value="${guild.id}">${guild.name}</option>
+                    </#list>
+                </select>
+                <span class="error error_${spring.status.expression}"></span>
+            </#if>
         </div>
 
         <div class="form-group">

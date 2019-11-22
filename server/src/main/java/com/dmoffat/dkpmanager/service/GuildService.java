@@ -96,4 +96,7 @@ public class GuildService {
         return player.getDkp();
     }
 
+    public Guild findByInviteCode(String inviteCode) {
+        return guildDao.findByInviteCode(inviteCode);
+    }
 }

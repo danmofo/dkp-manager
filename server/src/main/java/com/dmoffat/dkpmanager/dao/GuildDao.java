@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 
+// todo: Refactor the methods which find a guild by a property to use a generic method using the Criteria API (or entity manager equivalent)
 @Repository
 public class GuildDao extends HibernateDao<Guild, Integer> {
 
@@ -25,6 +26,14 @@ public class GuildDao extends HibernateDao<Guild, Integer> {
                 "left join fetch g.players " +
                 "where g.uri = :guildUri");
         query.setParameter("guildUri", guildUri);
+        return getSingleResult(query);
+    }
+
+    public Guild findByInviteCode(String inviteCode) {
+        Query query = entityManager().createQuery(
+                "from Guild g " +
+                "where g.inviteCode = :inviteCode");
+        query.setParameter("inviteCode", inviteCode);
         return getSingleResult(query);
     }
 }

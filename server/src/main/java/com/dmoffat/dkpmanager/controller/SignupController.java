@@ -16,10 +16,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -36,10 +33,22 @@ public class SignupController {
 
     @GetMapping("signup")
     public String signup(Model m) {
+        populateSignupModel(m);
+        return "signup";
+    }
+
+    @GetMapping("signup/{inviteCode}")
+    public String signupWithInviteCode(@PathVariable String inviteCode, Model m) {
+        populateSignupModel(m);
+        m.addAttribute("inviteCode", inviteCode);
+        m.addAttribute("guild", guildService.findByInviteCode(inviteCode));
+        return "signup";
+    }
+
+    private void populateSignupModel(Model m) {
         m.addAttribute("signupForm", new SignupForm());
         m.addAttribute("guilds", guildService.list());
         m.addAttribute("classes", wowClassService.list());
-        return "signup";
     }
 
     @PostMapping("signup")

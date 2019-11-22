@@ -25,4 +25,12 @@ public class RandomStringGenerator {
         }
         return out.toString();
     }
+
+    public static void main(String[] args) {
+
+        System.out.println(generate(16));
+        System.out.println(generate(16));
+
+
+    }
 }
