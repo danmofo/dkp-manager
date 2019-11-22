@@ -1,30 +1,30 @@
 package com.dmoffat.dkpmanager.dao;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+/**
+ * DAO using Hibernate
+ */
 @SuppressWarnings("unchecked")
-@Transactional
 public class HibernateDao<E, K extends Serializable> {
 
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
-    private Class<? extends E> daoType;
+    private Class<E> daoType;
+    private CriteriaBuilder criteriaBuilder;
 
     HibernateDao() {
         // getActualTypeArguments() returns the actual class objects, e.g. <Donation, Integer> for donation DAO.
         // However, this doesn't work if you don't extend this class (getGenericSuperclass returns Object), and I couldn't find a way to actually get that type information.
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        criteriaBuilder = entityManager.getCriteriaBuilder();
     }
 
     protected EntityManager entityManager() {
@@ -51,34 +51,34 @@ public class HibernateDao<E, K extends Serializable> {
     }
 
     public List<E> list() {
-        // todo: Use the proper method of listing entities
-        return entityManager.unwrap(Session.class).createCriteria(daoType).list();
+        CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(daoType);
+        Root<E> root = criteriaQuery.from(daoType);
+        TypedQuery<E> query = entityManager.createQuery(criteriaQuery.select(root))
+        return query.getResultList();
     }
 
     public E getProxy(K key) {
-        // todo: Use the proper method of listing entities
-        return entityManager.unwrap(Session.class).load(daoType, key);
+        return entityManager.getReference(daoType, key);
     }
 
     /**
      * @return The total amount of rows in this entity's table without any filters applied.
      */
     public int count() {
-        // todo: Use the proper method of listing entities
-        return ((Long)entityManager.unwrap(Session.class).createCriteria(daoType)
-                .setProjection(Projections.rowCount())
-                .uniqueResult()).intValue();
+        return count(null);
     }
 
     /**
-     * @return The total amount of rows in this entity's table with the given criteria applied.
-     * Note: No version for Query, because it doesn't have a setProjection method, you can just use count(*) in your HQL query.
+     * @return The total amount of rows in this entity's table with the given predicate applied. Useful for stuff like
+     * 'tell me the count of people with age > 10', stuff like that.
      */
-    public int count(Criteria c) {
-        if(c == null) {
-            return count();
+    public int count(Predicate predicate) {
+        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+        criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(daoType)));
+        if(predicate != null) {
+            criteriaQuery.where(predicate);
         }
-        return ((Long)c.setProjection(Projections.rowCount()).uniqueResult()).intValue();
+        return entityManager.createQuery(criteriaQuery).getSingleResult().intValue();
     }
 
     public E getSingleResult(Query query) {
