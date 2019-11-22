@@ -48,6 +48,7 @@ create table dkp_history (
 	id int primary key auto_increment,
 	player_id int not null,
 	dkp decimal(15, 5) not null default 0.00000,
+	reason varchar(255) null,
 	created timestamp not null default current_timestamp,
 	-- add created column for when it was awarded.
 	foreign key(player_id) references player(id)
@@ -85,8 +86,8 @@ insert into player (guild_id, class_id, dkp, name, email, password, forgotten_pa
 insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
 	values (2, 'Warlock', 400, 'Shadowman', 'test3@email.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token3', now());
 
-insert into dkp_history (player_id, dkp, created) values (1, 100, date_sub(now(), interval 2 day));
-insert into dkp_history (player_id, dkp, created) values (1, 150, date_sub(now(), interval 1 day));
-insert into dkp_history (player_id, dkp, created) values (1, 250, now());
-insert into dkp_history (player_id, dkp) values (2, 50);
-insert into dkp_history (player_id, dkp) values (3, 400);
+insert into dkp_history (player_id, dkp, reason, created) values (1, 100, 'Onyxia raid', date_sub(now(), interval 2 day));
+insert into dkp_history (player_id, dkp, reason, created) values (1, 150, 'Onyxia raid', date_sub(now(), interval 1 day));
+insert into dkp_history (player_id, dkp, reason, created) values (1, 250, 'Onyxia raid', now());
+insert into dkp_history (player_id, dkp, reason) values (2, 50, 'Molten Core raid');
+insert into dkp_history (player_id, dkp, reason) values (3, 400, 'Molten Core raid');

@@ -22,6 +22,14 @@
 		<div class="form-group">
 		    <@spring.bind "awardDkpForm.amount" />
 		    <label for=" ${spring.status.expression}">Amount</label>
+		    <input type="number" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
+		    <span class="error error_${spring.status.expression}"></span>
+		</div>
+
+		<div class="form-group">
+		    <@spring.bind "awardDkpForm.reason" />
+		    <label for=" ${spring.status.expression}">Reason</label>
+		    <p>Explain why you awarded this DKP, or leave it blank.</p>
 		    <input type="text" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
 		    <span class="error error_${spring.status.expression}"></span>
 		</div>

@@ -8,11 +8,13 @@
 		<tr>
 			<th>Date received</th>
 			<th>Amount</th>
+			<th>Reason</th>
 		</tr>
 		<#list player.dkpHistory as historyItem>
 			<tr>
 				<td>${historyItem.created}</td>
 				<td>${historyItem.dkp}</td>
+				<td>${historyItem.reason}</td>
 			</tr>
 		</#list>
 	</table>

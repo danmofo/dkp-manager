@@ -13,11 +13,10 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
-- Write a function to decay DKP for the whole guild rather than single players.
-- Fixing generated SQL by modifying object mappings.
 
 ## Features/functions
 
+- Fixing generated SQL by modifying object mappings.
 - Write some features for guild masters/people who manage DKP
 	- Need a way to invite their guild members - invite mechanic, paste a link to someone
 - Allow users to change to details
@@ -30,6 +29,8 @@ A website where users can register their guild and manage DKP in the game World 
 - Domain name (replace localhost references with new domain) and SSL cert setup
 - Add the ability to edit a DKP decay interval.
 - Add the ability to decay DKP at intervals using percentages rather than fixed numbers.
+- Automated tests?!?!
+- Manually edit a players DKP
 
 ## Development
 

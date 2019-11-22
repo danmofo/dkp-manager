@@ -16,6 +16,8 @@ public class DkpHistory {
 
     private Double dkp;
 
+    private String reason;
+
     private LocalDateTime created;
 
     public Integer getId() { return id; }
@@ -24,6 +26,8 @@ public class DkpHistory {
     public void setPlayer(Player player) { this.player = player; }
     public Double getDkp() { return dkp; }
     public void setDkp(Double dkp) { this.dkp = dkp; }
+    public String getReason() { return reason; }
+    public void setReason(String reason) { this.reason = reason; }
     public LocalDateTime getCreated() { return created; }
     public void setCreated(LocalDateTime created) { this.created = created; }
 
@@ -32,6 +36,7 @@ public class DkpHistory {
         return "DkpHistory{" +
                 "id=" + id +
                 ", player=" + player +
+                ", reason=" + reason +
                 ", dkp=" + dkp +
                 ", created=" + created +
                 '}';

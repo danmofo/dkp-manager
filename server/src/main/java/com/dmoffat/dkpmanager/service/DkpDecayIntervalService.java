@@ -50,6 +50,7 @@ public class DkpDecayIntervalService {
                 DkpHistory dkpHistory = new DkpHistory();
                 dkpHistory.setPlayer(player);
                 dkpHistory.setDkp(-decay.getDkp());
+                dkpHistory.setReason("Automated decay.");
                 dkpHistoryDao.add(dkpHistory);
             }
 

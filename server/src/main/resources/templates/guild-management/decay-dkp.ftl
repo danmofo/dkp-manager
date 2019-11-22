@@ -25,6 +25,7 @@
 						<div style="display:none;" class="js-decay-dkp-form">
 							<input type="number" class="js-decay-dkp-amount" placeholder="Enter amount" />
 							<span class="error error_amount"></span>
+							<input type="text" class="js-decay-dkp-reason" placeholder="Enter reason" />
 							<button class="js-decay-dkp-confirm" data-player-id="${player.id}">Confirm</button>
 							<button class="js-decay-dkp-cancel">Cancel</button>
 						</div>

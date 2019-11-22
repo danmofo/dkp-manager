@@ -11,8 +11,12 @@ public class DecayDkpForm {
     @NotNull
     private Integer playerId;
 
+    private String reason;
+
     public Double getAmount() { return amount; }
     public void setAmount(Double amount) { this.amount = amount; }
     public Integer getPlayerId() { return playerId; }
     public void setPlayerId(Integer playerId) { this.playerId = playerId; }
+    public String getReason() { return reason; }
+    public void setReason(String reason) { this.reason = reason; }
 }

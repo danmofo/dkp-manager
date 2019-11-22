@@ -55,9 +55,11 @@ class DecayDkpTable {
 
 	getDecayDkpRequestData(tableRow) {
 		const amountInput = tableRow.querySelector('.js-decay-dkp-amount');
+		const reasonInput = tableRow.querySelector('.js-decay-dkp-reason');
 		const confirmDkpBtn = tableRow.querySelector('.js-decay-dkp-confirm');
 		return {
 			'amount': parseFloat(amountInput.value || 0),
+			'reason': reasonInput.value,
 			'playerId': parseInt(confirmDkpBtn.dataset.playerId)
 		};
 	}

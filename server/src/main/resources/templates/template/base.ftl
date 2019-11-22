@@ -17,7 +17,9 @@
 				margin-bottom: 5px;
 			}
 
-			input[type="text"] {
+			input[type="text"],
+			input[type="number"],
+			input[type="date"] {
 				padding: 5px 10px;
 			}
 

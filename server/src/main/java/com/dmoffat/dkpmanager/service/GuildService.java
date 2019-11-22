@@ -60,6 +60,7 @@ public class GuildService {
             // Add DKP history row
             DkpHistory dkpHistory = new DkpHistory();
             dkpHistory.setPlayer(player);
+            dkpHistory.setReason(awardDkpForm.getReason());
             dkpHistory.setDkp(awardDkpForm.getAmount());
             dkpHistoryDao.add(dkpHistory);
             logger.debug("Added DKP history row.");
@@ -83,18 +84,16 @@ public class GuildService {
             return null;
         }
 
-        return decayDkp(player, decayDkpForm.getAmount());
-    }
-
-    private Double decayDkp(Player player, Double amount) {
         DkpHistory dkpHistory = new DkpHistory();
         dkpHistory.setPlayer(player);
-        dkpHistory.setDkp(-amount);
+        dkpHistory.setDkp(-decayDkpForm.getAmount());
+        dkpHistory.setReason(decayDkpForm.getReason());
         dkpHistoryDao.add(dkpHistory);
 
-        player.setDkp(player.getDkp() - amount);
+        player.setDkp(player.getDkp() - decayDkpForm.getAmount());
         playerDao.update(player);
 
         return player.getDkp();
     }
+
 }
