@@ -20,9 +20,12 @@ A website where users can register their guild and manage DKP in the game World 
 	- Add the ability to remove / edit them.
 	- Add the actual decaying bit which runs daily.
 		- cron job
-		-
 - Write a function to decay DKP for the whole guild rather than single players.
 - Fixing generated SQL by modifying object mappings.
+
+## Webpack notes
+- Link to all assets from the local dev server so they reload.
+- Take a look at the config
 
 ## Features/functions
 
