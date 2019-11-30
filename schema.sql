@@ -69,6 +69,20 @@ create table dkp_decay_interval (
 -- Create dummy data
 insert into guild (name, uri, invite_code, created) values ("Dan's guild", 'dans-guild', 'd94c8bfa505cdb75', now());
 insert into guild (name, uri, invite_code, created) values ("Another guild", 'another-guild', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild2", 'another-guild2', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild3", 'another-guild3', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild4", 'another-guild4', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild5", 'another-guild5', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild6", 'another-guild6', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild7", 'another-guild7', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild8", 'another-guild8', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild9", 'another-guild9', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild0", 'another-guild0', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild11", 'another-guild11', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild12", 'another-guild12', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild13", 'another-guild13', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild14", 'another-guild14', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild15", 'another-guild15', 'b9a6f2c3e7f6ec57', now());
 
 insert into class (id) values ("Priest");
 insert into class (id) values ("Hunter");

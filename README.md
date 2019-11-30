@@ -13,17 +13,15 @@ A website where users can register their guild and manage DKP in the game World 
 	- MySQL CLI
 
 ## Up next...
+- Write some pagination for pages which list items - guild list, dkp history page, players list page 
 - Allow users to change to details
 - Add a 404 page for when pages can't be found. Show the template that couldn't be found.
 - Add a 5xx page for when pages throw an error, and in development, print the stack trace to the webpage.
-- Write some pagination for pages which list items - guild list, dkp history page, players list page 
-- Implement Webpack for managing JavaScript
-- Make it look pretty - add CSS to external file and maybe use SASS or something else.
+- Make it look pretty - maybe use SASS or something else.
 	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.
 
 ## Webpack notes
-- Link to all assets from the local dev server so they reload.
-- Take a look at the config
+- We need a prod config.
 
 ## Features/functions
 
@@ -44,3 +42,4 @@ A website where users can register their guild and manage DKP in the game World 
 - Open MySQL CLI
 - Run `source c:/dev/dkp-manager/schema.sql`
 - Run app in IntelliJ (for now)
+- Start webpack-dev-server for editing CSS/JS files, `npm run dev-server`

@@ -1,7 +1,6 @@
 package com.dmoffat.dkpmanager.controller;
 
 import com.dmoffat.dkpmanager.model.Guild;
-import com.dmoffat.dkpmanager.model.Session;
 import com.dmoffat.dkpmanager.service.GuildService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
 
 @Controller
 public class ViewGuildInfoController {
@@ -20,9 +18,9 @@ public class ViewGuildInfoController {
     private GuildService guildService;
 
     @GetMapping("guilds")
-    public String list(@RequestAttribute Session session, Model m) {
+    public String list(Model m) {
         logger.debug("Listing guilds...");
-        m.addAttribute("guilds", guildService.list());
+        m.addAttribute("guildResults", guildService.list(1));
         return "list-guilds";
     }
 

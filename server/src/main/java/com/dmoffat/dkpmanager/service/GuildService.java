@@ -10,6 +10,7 @@ import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.forms.AwardDkpForm;
 import com.dmoffat.dkpmanager.model.forms.DecayDkpForm;
 import com.dmoffat.dkpmanager.model.forms.EditGuildForm;
+import com.dmoffat.dkpmanager.model.pagination.Results;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,20 @@ public class GuildService {
         return guildDao.find(id);
     }
 
+    // todo: Replace with the method below when we get round to it.
     public List<Guild> list() {
         return guildDao.list();
+    }
+
+    public Results<Guild> list(int pageNum) {
+        Results.Parameters params = new Results.Parameters();
+        params.setPage(pageNum);
+
+        Results<Guild> results = new Results<>(params);
+        results.setItems(guildDao.list(params));
+        results.setNumFound(guildDao.count());
+
+        return results;
     }
 
     public Guild findByUri(String guildUri) {
