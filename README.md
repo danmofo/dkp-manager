@@ -21,6 +21,10 @@ A website where users can register their guild and manage DKP in the game World 
 - Make it look pretty - add CSS to external file and maybe use SASS or something else.
 	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.
 
+## Webpack notes
+- Link to all assets from the local dev server so they reload.
+- Take a look at the config
+
 ## Features/functions
 
 - Fixing generated SQL by modifying object mappings.

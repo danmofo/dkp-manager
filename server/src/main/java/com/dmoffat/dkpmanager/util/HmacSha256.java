@@ -37,7 +37,7 @@ public class HmacSha256 {
 
     public boolean verify(String message, String providedHash) {
         String computedHash = sign(message);
-        return computedHash.equals(providedHash);
+        return computedHash.equals(providedHash); // This should be a timing-safe equals to prevent timing attacks, however probably not relevant for this website given its size...
     }
 
 }
