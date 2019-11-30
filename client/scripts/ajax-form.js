@@ -1,4 +1,6 @@
-class AjaxForm {
+import ValidationErrorHandler from './validation-error-handler'
+
+export default class AjaxForm {
 
 	constructor(options) {
 		this.options = options || {};
@@ -48,5 +50,3 @@ class AjaxForm {
 	}
 
 }
-
-window.AjaxForm = AjaxForm

@@ -1,9 +1,22 @@
-import _ from 'lodash';
+import AddDkpDecayIntervalForm from './add-dkp-decay-interval-form'
+import AwardDkpForm from './award-dkp-form'
+import DecayDkpTable from './decay-dkp-table'
+import DeleteDkpDecayIntervalButton from './delete-dkp-decay-interval-button'
+import EditDkpDecayIntervalButton from './edit-dkp-decay-interval-button'
+import EditGuildForm from './edit-guild-form'
+import ForgottenPasswordForm from './forgotten-password-form'
+import LoginForm from './login-form'
+import ResetPasswordForm from './reset-password-form'
+import SignupForm from './signup-form'
 
-function component() {
-	const element = document.createElement('div');
-	element.innerHTML = _.join(['Hello', 'Changed man'], ' ');
-	return element;
-}
-
-document.body.appendChild(component())
+// todo: add some path based initialisation
+new AddDkpDecayIntervalForm();
+new AwardDkpForm();
+new DecayDkpTable();
+new DeleteDkpDecayIntervalButton();
+new EditDkpDecayIntervalButton();
+new EditGuildForm();
+new ForgottenPasswordForm();
+new LoginForm();
+new ResetPasswordForm();
+new SignupForm();

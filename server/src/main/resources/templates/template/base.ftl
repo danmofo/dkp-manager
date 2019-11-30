@@ -71,6 +71,8 @@
 			</#if>
 		</ul>
 		<#nested />	
+
+		<script src="http://localhost:8081/main.js"></script>
 	</body>
 	</html>
 </#macro>

@@ -53,7 +53,7 @@ public class HibernateDao<E, K extends Serializable> {
     public List<E> list() {
         CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(daoType);
         Root<E> root = criteriaQuery.from(daoType);
-        TypedQuery<E> query = entityManager.createQuery(criteriaQuery.select(root))
+        TypedQuery<E> query = entityManager.createQuery(criteriaQuery.select(root));
         return query.getResultList();
     }
 

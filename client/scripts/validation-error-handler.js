@@ -1,4 +1,4 @@
-class ValidationErrorHandler {
+export default class ValidationErrorHandler {
 
 	handleErrors(validationResp) {
 		console.log('Handling errors.')
@@ -19,7 +19,6 @@ class ValidationErrorHandler {
 			});
 		});
 	}
-
 	
 	clearExistingErrors() {
 		document.querySelectorAll('.error').forEach(el => {
@@ -28,5 +27,3 @@ class ValidationErrorHandler {
 	}
 
 }
-
-window.ValidationErrorHandler = ValidationErrorHandler;

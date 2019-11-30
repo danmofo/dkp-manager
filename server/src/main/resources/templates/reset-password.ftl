@@ -39,9 +39,4 @@
 	<#else>
 		<p>No token was specified.</p>
 	</#if>
-
-	<script src="/ajax-form.js"></script>
-	<script src="/validation-error-handler.js"></script>
-	<script src="/reset-password-form.js"></script>
-
 </@layout.general>

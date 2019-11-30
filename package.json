@@ -6,6 +6,7 @@
   "scripts": {
     "dev-server": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "node ./node_modules/webpack/bin/webpack.js",
+    "dev": "node ./node_modules/webpack/bin/webpack.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,5 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
   }
 }

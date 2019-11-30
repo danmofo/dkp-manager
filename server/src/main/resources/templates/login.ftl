@@ -26,8 +26,4 @@
 
     <p>If you don't have an account, you can <a href="/signup">Sign up here.</a></p>
     <p>Forgotten your password? <a href="/forgotten-password">Reset your password</a></p>
-
-    <script src="/ajax-form.js"></script>
-    <script src="/validation-error-handler.js"></script>
-    <script src="/login-form.js"></script>
 </@layout.general>

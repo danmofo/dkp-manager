@@ -22,8 +22,4 @@
 
         <input type="submit" value="Send forgotten password email" />
     </form>
-
-    <script src="/ajax-form.js"></script>
-    <script src="/validation-error-handler.js"></script>
-    <script src="/forgotten-password-form.js"></script>
 </@layout.general>

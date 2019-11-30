@@ -1,7 +1,18 @@
-class DecayDkpTable {
+import ValidationErrorHandler from './validation-error-handler'
+import {
+	getParentTableRowElement,
+	isTableRow
+} from './utils'
+
+export default class DecayDkpTable {
 
 	constructor() {
 		this.table = document.querySelector('.js-decay-dkp-table');
+		
+		if(!this.table) {
+			return;
+		}
+
 		this.errorHandler = new ValidationErrorHandler();
 		this.bindEvents();
 	}
@@ -101,25 +112,3 @@ class DecayDkpTable {
 	}
 
 }
-
-function getParentTableRowElement(el) {
-	if(isTableRow(el)) {
-		return el;
-	}
-
-	let parentEl = el.parentElement;
-	while(parentEl !== null) {
-		if(isTableRow(parentEl)) {
-			return parentEl;
-		}
-		parentEl = parentEl.parentElement;
-	}
-
-	return parentEl;
-}
-
-function isTableRow(el) {
-	return el.tagName.toLowerCase() === 'tr';
-}
-
-new DecayDkpTable();

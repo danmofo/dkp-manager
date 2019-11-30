@@ -33,9 +33,4 @@
         <input type="submit" value="Edit guild" />
 
 	</form>
-
-	<script src="/ajax-form.js"></script>
-	<script src="/validation-error-handler.js"></script>
-	<script src="/edit-guild-form.js"></script>
-
 </@layout.general>
