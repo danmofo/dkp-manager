@@ -40,6 +40,28 @@ public class Results<T> {
         this.numPages = (int)Math.ceil((double)numFound / parameters.itemsPerPage);
     }
 
+    public int prevPageNum() {
+        if(parameters.page == 1) {
+            return -1;
+        }
+        return parameters.page - 1;
+    }
+
+    public int nextPageNum() {
+        if(parameters.page == numPages) {
+            return -1;
+        }
+        return parameters.page + 1;
+    }
+
+    public boolean hasPrevPage() {
+        return prevPageNum() != -1;
+    }
+
+    public boolean hasNextPage() {
+        return nextPageNum() != -1;
+    }
+
     public int getNumFound() { return numFound; }
     public int getNumPages() { return numPages; }
     public void setNumPages(int numPages) { this.numPages = numPages; }

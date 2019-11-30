@@ -1,4 +1,5 @@
 <#import "template/base.ftl" as layout />
+<#import "common/pagination.ftl" as pagination>
 <@layout.general>
 	<h1>Guilds</h1>
 
@@ -10,5 +11,7 @@
 				<li><a href="/guilds/${guild.uri}">${guild.name}</a></li>
 			</#list>
 		</ul>
+
+		<@pagination.pagination results=guildResults />
 	</#if>
 </@layout.general>
