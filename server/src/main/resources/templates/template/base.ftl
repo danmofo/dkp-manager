@@ -4,46 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Page title goes here - todo</title>
-
-		<style>
-			html {
-				font-family: 'Tahoma';
-				font-size: 16px;
-			}
-
-			label {
-				font-weight: bold;
-				display: block;
-				margin-bottom: 5px;
-			}
-
-			input[type="text"],
-			input[type="number"],
-			input[type="date"] {
-				padding: 5px 10px;
-			}
-
-			.form-group {
-				margin-bottom: 15px;
-			}
-
-			.error {
-				color: red;
-			}
-
-			.alert {
-				display: inline-block;
-				padding: 15px 25px;
-				color: green;
-				margin-bottom: 15px;
-				border-radius: 3px;
-			}
-
-			.alert-success {
-				background-color: #d3f2d3;
-				border: 1px solid #87cd87;
-			}
-		</style>
+		<link rel="stylesheet" href="http://localhost:8081/main.css" />
 	</head>
 	<body>
 		Is logged in? ${session.loggedIn?c}

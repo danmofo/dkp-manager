@@ -92,14 +92,4 @@
 		</#if>
 
 	</div>
-
-	<script src="/ajax-form.js"></script>
-	<script src="/validation-error-handler.js"></script>
-	<script src="/decay-dkp-table.js"></script>
-	<script src="/add-dkp-decay-interval-form.js"></script>
-
-	<#if guild.dkpDecayInterval??>
-		<script src="/delete-dkp-decay-interval-button.js"></script>
-	</#if>
-
 </@layout.general>

@@ -1,3 +1,5 @@
+import Styles from '../styles/main.css'
+
 import AddDkpDecayIntervalForm from './add-dkp-decay-interval-form'
 import AwardDkpForm from './award-dkp-form'
 import DecayDkpTable from './decay-dkp-table'

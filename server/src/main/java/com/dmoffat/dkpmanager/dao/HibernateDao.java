@@ -1,7 +1,6 @@
 package com.dmoffat.dkpmanager.dao;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -18,13 +17,11 @@ public class HibernateDao<E, K extends Serializable> {
     @PersistenceContext
     private EntityManager entityManager;
     private Class<E> daoType;
-    private CriteriaBuilder criteriaBuilder;
 
     HibernateDao() {
         // getActualTypeArguments() returns the actual class objects, e.g. <Donation, Integer> for donation DAO.
         // However, this doesn't work if you don't extend this class (getGenericSuperclass returns Object), and I couldn't find a way to actually get that type information.
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        criteriaBuilder = entityManager.getCriteriaBuilder();
     }
 
     protected EntityManager entityManager() {
@@ -51,7 +48,7 @@ public class HibernateDao<E, K extends Serializable> {
     }
 
     public List<E> list() {
-        CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(daoType);
+        CriteriaQuery<E> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(daoType);
         Root<E> root = criteriaQuery.from(daoType);
         TypedQuery<E> query = entityManager.createQuery(criteriaQuery.select(root));
         return query.getResultList();
@@ -73,8 +70,8 @@ public class HibernateDao<E, K extends Serializable> {
      * 'tell me the count of people with age > 10', stuff like that.
      */
     public int count(Predicate predicate) {
-        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
-        criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(daoType)));
+        CriteriaQuery<Long> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(Long.class);
+        criteriaQuery.select(entityManager.getCriteriaBuilder().count(criteriaQuery.from(daoType)));
         if(predicate != null) {
             criteriaQuery.where(predicate);
         }
