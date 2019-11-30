@@ -4,8 +4,8 @@
   "description": "A website where users can register their guild and manage DKP in the game World of Warcraft.",
   "private": true,
   "scripts": {
-    "dev-server": "webpack-dev-server",
-    "build": "webpack",
+    "dev-server": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "node ./node_modules/webpack/bin/webpack.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

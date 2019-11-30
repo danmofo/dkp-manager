@@ -3,3 +3,4 @@
 .idea/
 target/
 .secretkey
+node_modules/
