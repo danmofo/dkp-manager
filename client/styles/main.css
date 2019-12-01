@@ -1,7 +1,133 @@
-html {
-	font-family: 'Tahoma';
-	font-size: 16px;
+/**
+ * Main stylesheet for DKP Manager website.
+ *
+ * Scheme: https://coolors.co/ebe9e9-f3f8f2-3581b8-fcb07e-dee2d6
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Alatsi|Open+Sans:300,400&display=swap');
+
+/**
+ * Variables
+ */
+:root {
+	--brand-primary: #3581B8;
+	--brand-primary-dark: #2C6A97;
+	--brand-alt: #FCB07E;
 }
+
+/**
+ * Base
+ */
+
+html {
+	font-family: 'Open Sans';
+	font-size: 16px;
+	color: #262626;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+/**
+ * Typography
+ */
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Alatsi';
+	margin-top: 0;
+}
+
+/**
+ * Layout
+ */
+
+.container {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**
+ * Helpers
+ */
+
+.error {
+	color: red;
+}
+
+/**
+ * Navigation
+ */
+
+.navigation {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+	background-color: var(--brand-primary);
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.navigation__item {
+	display: inline-block;
+}
+
+.navigation__item a {
+	color: #F3F8F2;
+	text-decoration: none;
+	padding: 20px 30px;
+	display: block;
+	transition: background .20s ease-in-out;
+}
+
+.navigation__item a:hover {
+	background-color: var(--brand-primary-dark);
+}
+
+.navigation__item:last-child {
+	margin-right: 0;
+}
+
+/**
+ * Hero
+ */
+.hero {
+	text-align: center;
+	background-color: #EBE9E9;
+	padding-top: 50px;
+	padding-bottom: 70px;
+}
+
+.hero__title {
+	margin-bottom: 10px;
+}
+
+.hero__intro {
+	font-weight: 200;
+}
+
+/**
+ * Buttons
+ */
+
+.btn {
+	background-color: var(--brand-primary);
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 3px;
+	color: #fff;
+}
+
+.btn:hover {
+	background-color: var(--brand-primary-dark);
+}
+
+/**
+ * Forms
+ */
 
 label {
 	font-weight: bold;
@@ -19,9 +145,9 @@ input[type="date"] {
 	margin-bottom: 15px;
 }
 
-.error {
-	color: red;
-}
+/**
+ * Alerts
+ */
 
 .alert {
 	display: inline-block;
@@ -34,4 +160,30 @@ input[type="date"] {
 .alert-success {
 	background-color: #d3f2d3;
 	border: 1px solid #87cd87;
+}
+
+/**
+ * Band
+ */
+
+.band {
+	padding-top: 30px;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #ccc;
+}
+
+.band__title {
+
+}
+
+.band p {
+
+}
+
+.band--highlight {
+	background-color: var(--brand-alt);
+}
+
+.band--highlight > * {
+	
 }
