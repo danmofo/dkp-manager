@@ -6,6 +6,8 @@ import com.dmoffat.dkpmanager.dao.WowClassDao;
 import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.forms.LoginForm;
 import com.dmoffat.dkpmanager.model.forms.SignupForm;
+import com.dmoffat.dkpmanager.model.pagination.PlayerParameters;
+import com.dmoffat.dkpmanager.model.pagination.Results;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,7 +70,23 @@ public class PlayerService {
         playerDao.update(player);
     }
 
+    // todo: Refactor this to use Results, it will still need to return a list of all players in the guild, not just a specific page.
     public List<Player> findByGuildId(Integer guildId) {
-        return playerDao.findByGuildId(guildId);
+        Results.Parameters params = new Results.Parameters();
+        params.setItemsPerPage(9999);
+        return playerDao.findByGuildId(guildId, params);
     }
+
+    public Results<Player> findByGuildId(Integer guildId, Integer pageNum) {
+        PlayerParameters params = new PlayerParameters();
+        params.setPage(pageNum);
+        params.setGuildId(guildId);
+
+        Results<Player> results = new Results<>(params);
+        results.setItems(playerDao.findByGuildId(guildId, params));
+        results.setNumFound(playerDao.countByGuildId(guildId).intValue());
+
+        return results;
+    }
+
 }

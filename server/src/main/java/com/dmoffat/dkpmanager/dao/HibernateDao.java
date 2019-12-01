@@ -1,6 +1,9 @@
 package com.dmoffat.dkpmanager.dao;
 
+import com.dmoffat.dkpmanager.model.pagination.Results;
+
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -28,6 +31,12 @@ public class HibernateDao<E, K extends Serializable> {
         return entityManager;
     }
 
+    public Predicate propertyEquals(String propertyName, Object value) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        Root<E> root =  criteriaBuilder.createQuery(daoType).from(daoType);
+        return criteriaBuilder.equal(root.get(propertyName), value);
+    }
+
     public void add(E entity) {
         entityManager.persist(entity);
     }
@@ -48,10 +57,21 @@ public class HibernateDao<E, K extends Serializable> {
     }
 
     public List<E> list() {
+        TypedQuery<E> query = listQuery();
+        return query.getResultList();
+    }
+
+    public List<E> list(Results.Parameters params) {
+        TypedQuery<E> query = listQuery();
+        query.setMaxResults(params.getItemsPerPage());
+        query.setFirstResult(params.getOffset());
+        return query.getResultList();
+    }
+
+    private TypedQuery<E> listQuery() {
         CriteriaQuery<E> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(daoType);
         Root<E> root = criteriaQuery.from(daoType);
-        TypedQuery<E> query = entityManager.createQuery(criteriaQuery.select(root));
-        return query.getResultList();
+        return entityManager.createQuery(criteriaQuery.select(root));
     }
 
     public E getProxy(K key) {
@@ -70,7 +90,8 @@ public class HibernateDao<E, K extends Serializable> {
      * 'tell me the count of people with age > 10', stuff like that.
      */
     public int count(Predicate predicate) {
-        CriteriaQuery<Long> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(Long.class);
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Long> criteriaQuery = cb.createQuery(Long.class);
         criteriaQuery.select(entityManager.getCriteriaBuilder().count(criteriaQuery.from(daoType)));
         if(predicate != null) {
             criteriaQuery.where(predicate);

@@ -9,6 +9,7 @@ import EditGuildForm from './edit-guild-form'
 import ForgottenPasswordForm from './forgotten-password-form'
 import GuildList from './guild-list'
 import LoginForm from './login-form'
+import PlayerList from './player-list'
 import ResetPasswordForm from './reset-password-form'
 import SignupForm from './signup-form'
 
@@ -22,5 +23,6 @@ new EditGuildForm();
 new ForgottenPasswordForm();
 new GuildList();
 new LoginForm();
+new PlayerList();
 new ResetPasswordForm();
 new SignupForm();

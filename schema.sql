@@ -110,6 +110,26 @@ insert into player (guild_id, class_id, dkp, name, email, password, forgotten_pa
 insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
 	values (1, 'Hunter', 50, 'Huntard', 'danmofo2@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
 insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Warrior', 50, 'Warriorman', 'danmofo3@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Druid', 50, 'Leafman', 'danmofo4@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Shaman', 50, 'Totemman', 'danmofo5@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Warlock', 50, 'Dotman', 'danmofo6@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Mage', 50, 'Wizardman', 'danmofo7@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Druid', 50, 'Bearman', 'danmofo8@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Shaman', 50, 'Nicename', 'danmofo9@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Druid', 50, 'Nobrain', 'danmofo10@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Druid', 50, 'Lowbie', 'danmofo11@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
+	values (1, 'Hunter', 50, 'Bliss', 'danmofo12@gmail.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token2', now());
+insert into player (guild_id, class_id, dkp, name, email, password, forgotten_password_token, created) 
 	values (2, 'Warlock', 400, 'Shadowman', 'test3@email.com','$2a$10$UClsNpkDaeFO7JMOhUNp.OorcpZ.3PTiAFCZ4ZSCwp/gKFjribspG', 'forgotten-password-token3', now());
 
 insert into dkp_history (player_id, dkp, reason, created) values (1, 100, 'Onyxia raid', date_sub(now(), interval 2 day));

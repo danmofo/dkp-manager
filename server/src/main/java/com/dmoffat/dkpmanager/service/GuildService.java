@@ -50,7 +50,9 @@ public class GuildService {
     }
 
     public Guild findByUri(String guildUri) {
-        return guildDao.findByUri(guildUri);
+        Guild guild = guildDao.findByUri(guildUri);
+        guild.setPagedPlayers(playerService.findByGuildId(guild.getId(), 1));
+        return guild;
     }
 
     public void edit(Guild guild, EditGuildForm editGuildForm) {

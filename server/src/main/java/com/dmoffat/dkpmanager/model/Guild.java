@@ -1,5 +1,7 @@
 package com.dmoffat.dkpmanager.model;
 
+import com.dmoffat.dkpmanager.model.pagination.Results;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -22,6 +24,9 @@ public class Guild implements Serializable {
     @OneToMany(mappedBy = "guild")
     private List<Player> players;
 
+    @Transient
+    private Results<Player> pagedPlayers;
+
     private String inviteCode;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -42,6 +47,8 @@ public class Guild implements Serializable {
     public void setDkpDecayInterval(DkpDecayInterval dkpDecayInterval) { this.dkpDecayInterval = dkpDecayInterval; }
     public String getInviteCode() { return inviteCode; }
     public void setInviteCode(String inviteCode) { this.inviteCode = inviteCode; }
+    public Results<Player> getPagedPlayers() { return pagedPlayers; }
+    public void setPagedPlayers(Results<Player> pagedPlayers) { this.pagedPlayers = pagedPlayers; }
 
     @Override
     public String toString() {
