@@ -18,9 +18,19 @@ export default class GuildList {
 
 	onClickPage(pageNum) {
 		console.log('Guild list: clicked page - ' + pageNum);
+		this.showLoading();
 		this.fetchGuildListPage(pageNum).then(html => {
+			this.hideLoading();
 			this.list.innerHTML = html;
 		});
+	}
+
+	showLoading() {
+		this.list.innerHTML = 'Loading...'; // TODO: Use a spinner and move this into the template.
+	}
+
+	hideLoading() {
+		this.list.innerHTML = '';
 	}
 
 	fetchGuildListPage(pageNum) {
