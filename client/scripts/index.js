@@ -7,6 +7,7 @@ import DeleteDkpDecayIntervalButton from './delete-dkp-decay-interval-button'
 import EditDkpDecayIntervalButton from './edit-dkp-decay-interval-button'
 import EditGuildForm from './edit-guild-form'
 import ForgottenPasswordForm from './forgotten-password-form'
+import GuildList from './guild-list'
 import LoginForm from './login-form'
 import ResetPasswordForm from './reset-password-form'
 import SignupForm from './signup-form'
@@ -19,6 +20,7 @@ new DeleteDkpDecayIntervalButton();
 new EditDkpDecayIntervalButton();
 new EditGuildForm();
 new ForgottenPasswordForm();
+new GuildList();
 new LoginForm();
 new ResetPasswordForm();
 new SignupForm();

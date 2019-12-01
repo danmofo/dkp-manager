@@ -1,17 +1,7 @@
 <#import "template/base.ftl" as layout />
-<#import "common/pagination.ftl" as pagination>
 <@layout.general>
 	<h1>Guilds</h1>
-
-	<#if guildResults.numFound == 0>
-		<p>No guilds found.</p>
-	<#else>
-		<ul>
-			<#list guildResults.items as guild>
-				<li><a href="/guilds/${guild.uri}">${guild.name}</a></li>
-			</#list>
-		</ul>
-
-		<@pagination.pagination results=guildResults />
-	</#if>
+	<div class="js-guild-list">
+		<#include "guild-results.ftl" />
+	</div>
 </@layout.general>

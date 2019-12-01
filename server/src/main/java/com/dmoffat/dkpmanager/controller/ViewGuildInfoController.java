@@ -1,6 +1,7 @@
 package com.dmoffat.dkpmanager.controller;
 
 import com.dmoffat.dkpmanager.model.Guild;
+import com.dmoffat.dkpmanager.model.pagination.Results;
 import com.dmoffat.dkpmanager.service.GuildService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,6 +23,12 @@ public class ViewGuildInfoController {
         logger.debug("Listing guilds...");
         m.addAttribute("guildResults", guildService.list(1));
         return "list-guilds";
+    }
+
+    @GetMapping("guilds/ajax")
+    public String listGuildsAjax(Results.Parameters parameters, Model m) {
+        m.addAttribute("guildResults", guildService.list(parameters.getPage()));
+        return "guild-results";
     }
 
     @GetMapping("guilds/{guildUri}")

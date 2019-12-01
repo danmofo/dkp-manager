@@ -4,17 +4,24 @@
 		<#return>
 	</#if>
 
-	<p>You are currently on page <strong>${results.parameters.page}</strong> of <strong>${results.numPages}</strong></p>
+	<div class="js-pagination" data-current-page="${results.parameters.page}">
+		<p>Page <strong>${results.parameters.page}</strong> of <strong>${results.numPages}</strong></p>
 
-	<#if results.hasPrevPage()>
-		<button>Prev page</button>
-	</#if>
+		<#if results.hasPrevPage()>
+			<#if results.numPages &gt; 2>
+				<button class="js-pagination-page" data-page="1">First page</button>
+			</#if>
 
-	<#if results.hasNextPage()>
-		<button>Next page</button>
-	</#if>
+			<button class="js-pagination-page" data-page="${results.prevPageNum()}">Prev page</button>
+		</#if>
 
-	<p>Next page: <strong>${results.nextPageNum()}</strong> (hasNextPage? ${results.hasNextPage()?c})</p>
-	<p>Prev page: <strong>${results.prevPageNum()}</strong> (hasPrevPage? ${results.hasPrevPage()?c})</p>
+		<#if results.hasNextPage()>
+			<button class="js-pagination-page" data-page="${results.nextPageNum()}">Next page</button>
+
+			<#if results.numPages &gt; 2>
+				<button class="js-pagination-page" data-page="${results.numPages}">Last page</button>
+			</#if>
+		</#if>
+	</div>
 
 </#macro>

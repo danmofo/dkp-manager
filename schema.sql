@@ -83,6 +83,17 @@ insert into guild (name, uri, invite_code, created) values ("Another guild12", '
 insert into guild (name, uri, invite_code, created) values ("Another guild13", 'another-guild13', 'b9a6f2c3e7f6ec57', now());
 insert into guild (name, uri, invite_code, created) values ("Another guild14", 'another-guild14', 'b9a6f2c3e7f6ec57', now());
 insert into guild (name, uri, invite_code, created) values ("Another guild15", 'another-guild15', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild16", 'another-guild16', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild17", 'another-guild17', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild18", 'another-guild18', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild19", 'another-guild19', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild20", 'another-guild20', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild21", 'another-guild21', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild22", 'another-guild22', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild23", 'another-guild23', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild24", 'another-guild24', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild25", 'another-guild25', 'b9a6f2c3e7f6ec57', now());
+insert into guild (name, uri, invite_code, created) values ("Another guild26", 'another-guild26', 'b9a6f2c3e7f6ec57', now());
 
 insert into class (id) values ("Priest");
 insert into class (id) values ("Hunter");
