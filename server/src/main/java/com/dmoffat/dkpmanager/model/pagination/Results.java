@@ -41,14 +41,14 @@ public class Results<T> {
     }
 
     public int prevPageNum() {
-        if(parameters.page == 1) {
+        if(parameters.page <= 1) {
             return -1;
         }
         return parameters.page - 1;
     }
 
     public int nextPageNum() {
-        if(parameters.page == numPages) {
+        if(parameters.page >= numPages) {
             return -1;
         }
         return parameters.page + 1;
