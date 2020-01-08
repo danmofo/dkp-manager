@@ -44,3 +44,10 @@ considering this idea, I would just write a WoW plugin.**
 ### Windows
 - Start webpack-dev-server for editing CSS/JS files, `npm run dev-server`
 - Run the app, `./run-dev`.
+
+## Docker notes
+What we would like:
+- Templates/JARs be referencing the local versions, so we just simply rebuild the JAR file when developing,
+or just save the template file and see our changes reflected straight away.
+- When deploying to production we would build everything from scratch copy those into the container, we would
+never need to change these so it won't matter if this step takes a long time or not.
