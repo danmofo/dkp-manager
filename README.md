@@ -39,7 +39,5 @@ A website where users can register their guild and manage DKP in the game World 
 ## Development
 
 ### Windows
-- Open MySQL CLI
-- Run `source c:/dev/dkp-manager/schema.sql`
-- Run app in IntelliJ (for now)
 - Start webpack-dev-server for editing CSS/JS files, `npm run dev-server`
+- Run the app, `./run-dev`.

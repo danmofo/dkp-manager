@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Starts the backend server for development
+
+# Ensure env file is present - could make this more robust by checking each line inside template.env
+# is included in .env to ensure all values have been included.
+if [[ ! -f ".env" ]]; then
+	echo "No .env file found. Please create one using template.env as a template."
+	exit 1
+fi
+
+# Load environment variables - this probably won't work on Windows...
+# https://stackoverflow.com/questions/19331497/set-environment-variables-from-file-of-key-value-pairs/19331521
+set -o allexport
+source .env
+set +o allexport
+
+# Start the database - todo: we should check docker-compose is installed on the host machine
+docker-compose up -d
+
+# todo: We need to wait here until the database is up - when it's started for the first time the database
+# hasn't been initialised and this has failed.
+
+# Run the app - eventually this will be inside a container rather than running on the host machine.
+mvn spring-boot:run

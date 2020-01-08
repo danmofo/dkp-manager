@@ -1,6 +1,19 @@
+# Junk files created by vim inside Git Bash
 *.*~
 .*.*~
+
+# IntelliJ project files
 .idea/
+
+# Compiled Java sources
 target/
+
+# Super secret key
 .secretkey
+
+# JS dependencies
 node_modules/
+
+# Environment files
+.env
+!template.env
