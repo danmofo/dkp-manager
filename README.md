@@ -2,6 +2,9 @@
 
 A website where users can register their guild and manage DKP in the game World of Warcraft.
 
+**This is just a fun side-project because I couldn't think of a better idea. If I was seriously
+considering this idea, I would just write a WoW plugin.**
+
 - Backend: Java (Spring/Hibernate), MySQL and maybe a little Bash/Groovy.
 - Frontend: HTML, CSS and JavaScript. Maybe add some Webpack stuff later on.
 - OS: Developing = Windows, Deploying = Linux. Maybe Docker containers in the future.
