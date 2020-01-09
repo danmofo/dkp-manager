@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Builds the app
+
+# Ensure env file is present - could make this more robust by checking each line inside template.env
+# is included in .env to ensure all values have been included.
+if [[ ! -f ".env" ]]; then
+	echo "No .env file found. Please create one using template.env as a template."
+	exit 1
+fi
+
+# Build the app
+mvn package
+
+# Build the Docker image
+docker build -t dmoffat/dkpmanager .

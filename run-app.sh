@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 # This script runs the Spring Boot app inside the container.
 
@@ -11,9 +11,11 @@ set +o allexport
 # Wait for the database to become available.
 until nc -z -v -w30 db 3306
 do
-  echo "Waiting for database connection... on host db"
-  sleep 5
+  echo "Database not yet available, waiting 3 seconds..."
+  sleep 3
 done
+
+echo "Database available, starting app."
 
 # Run the app
 java -jar /app.jar

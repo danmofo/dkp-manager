@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
 
-# Starts the backend server for development
+# Development script, starts the backend
 
-# Ensure env file is present - could make this more robust by checking each line inside template.env
-# is included in .env to ensure all values have been included.
-if [[ ! -f ".env" ]]; then
-	echo "No .env file found. Please create one using template.env as a template."
-	exit 1
-fi
+# Firstly, build the backend code, note: this could be extended to build the frontend code too, may
+# need a flag for different environments.
+./build-app
 
-# Build the app
-mvn clean package
+# Start the containers (database/app)
+docker-compose up -d
 
-# Build the Docker image
-docker build -t dmoffat/dkpmanager .
-
-# Start the database/app
-docker-compose up --build
+# Listen for changes to frontend assets - this will require an NPM install on the host machine!
+npm run dev-server

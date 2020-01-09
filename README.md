@@ -43,7 +43,7 @@ considering this idea, I would just write a WoW plugin.**
 
 ### Windows
 - Start webpack-dev-server for editing CSS/JS files, `npm run dev-server`
-- Run the app, `./run-dev`.
+- Run the app, `./run-dev`
 
 ## Docker notes
 What we would like:

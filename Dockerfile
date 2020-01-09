@@ -2,6 +2,8 @@
 
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
+
+COPY client/templates /templates/
 COPY .env .env
 COPY target/*.jar app.jar
 COPY run-app.sh run-app.sh
