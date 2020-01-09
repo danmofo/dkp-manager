@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Builds the app
+# Builds the app and creates a Docker image.
 
 # Ensure env file is present - could make this more robust by checking each line inside template.env
 # is included in .env to ensure all values have been included.
@@ -17,7 +17,6 @@ rm -rf target/dependency
 mkdir -p target/dependency
 cd target/dependency
 jar -xf ../*.jar
-rm -rf ../*.jar
 cd ../../
 
 # Build the Docker image

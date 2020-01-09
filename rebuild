@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Rebuilds the backend app
+
+# Build it
+./build-app
+
+# Restart
+docker container kill dkp-manager_app_1
+docker-compose up -d

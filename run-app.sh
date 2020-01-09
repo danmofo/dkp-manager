@@ -18,4 +18,4 @@ done
 echo "Database available, starting app."
 
 # Run the app
-java -cp app:app/lib/* -noverify -XX:TieredStopAtLevel=1 -XX:+AlwaysPreTouch com.dmoffat.dkpmanager.Application --debug
+java -cp app:app/lib/* -noverify -XX:TieredStopAtLevel=1 -XX:+AlwaysPreTouch com.dmoffat.dkpmanager.Application

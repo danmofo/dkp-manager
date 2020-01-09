@@ -1,0 +1,6 @@
+# This is huge..
+node_modules/
+
+# JAR files created when compiling the program, but no longer needed after they've been extracted when creating the Dockerfile.
+target/*.jar
+target/*.jar.original
