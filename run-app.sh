@@ -18,4 +18,4 @@ done
 echo "Database available, starting app."
 
 # Run the app
-java -jar /app.jar
+java -jar -noverify -XX:TieredStopAtLevel=1 -XX:+AlwaysPreTouch /app.jar
