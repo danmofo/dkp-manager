@@ -4,6 +4,9 @@ services:
     image: dmoffat/dkpmanager
     volumes:
       - ./client/templates:/app/templates
+      - ./target/classes/com:/app/com
+      - ./target/classes/application.properties:/app/application.properties
+      - ./target/classes/messages.properties:/app/messages.properties
     depends_on:
       - db
     ports:
