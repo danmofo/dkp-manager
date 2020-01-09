@@ -1,4 +1,4 @@
-<#import "template/base.ftl" as layout />
+<#import "template/base.ftlh" as layout />
 <@layout.general>
 	<#assign playerResults=guild.pagedPlayers />
 
@@ -9,7 +9,7 @@
 		<p>No players currently belong to this guild.</p>
 	<#else>
 		<p>Here are the players in this guild....</p>
-		<#include "player-results.ftl" />
+		<#include "player-results.ftlh" />
 	</#if>
 
 </@layout.general>

@@ -1,4 +1,4 @@
-<#import "template/base.ftl" as layout />
+<#import "template/base.ftlh" as layout />
 <@layout.general>
 	<h1>${player.name} &lt;${player.guild.name}&gt; </h1>
 	<p>Total DKP: <strong>${player.dkp}</strong></p>

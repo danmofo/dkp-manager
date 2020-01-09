@@ -1,4 +1,4 @@
-<#import "common/pagination.ftl" as pagination>
+<#import "common/pagination.ftlh" as pagination>
 
 <#if guildResults.numFound == 0>
 	<p>No guilds found.</p>

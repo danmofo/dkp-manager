@@ -8,17 +8,7 @@ public class HomepageController {
 
     @GetMapping("/")
     public String homepage() {
-        return "homepage.ftl";
-    }
-
-    @GetMapping("/testing")
-    public String test12() {
         return "homepage";
     }
-
-//    @GetMapping("/testing")
-//    public String test22() {
-//        return "homepage";
-//    }
 
 }

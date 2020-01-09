@@ -1,4 +1,4 @@
-<#import "common/pagination.ftl" as pagination />
+<#import "common/pagination.ftlh" as pagination />
 <div class="js-player-list" data-guild-id="${playerResults.parameters.guildId}">
 	<ul>
 		<#list playerResults.items as player>

@@ -1,4 +1,4 @@
-<#import "template/base.ftl" as layout />
+<#import "template/base.ftlh" as layout />
 <#import "/spring.ftl" as spring />
 
 <@layout.general>
