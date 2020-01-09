@@ -12,5 +12,13 @@ fi
 # Build the app
 mvn package
 
+# Separate the JAR into the layers we'll use in our Docker image.
+rm -rf target/dependency
+mkdir -p target/dependency
+cd target/dependency
+jar -xf ../*.jar
+rm -rf ../*.jar
+cd ../../
+
 # Build the Docker image
 docker build -t dmoffat/dkpmanager .
