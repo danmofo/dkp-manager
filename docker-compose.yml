@@ -3,7 +3,7 @@ services:
   app:
     image: dmoffat/dkpmanager
     volumes:
-      - ./client/templates:/templates
+      - ./client/templates:/app/templates
     depends_on:
       - db
     ports:
