@@ -22,7 +22,7 @@ considering this idea, I would just write a WoW plugin.**
 - Add a 5xx page for when pages throw an error, and in development, print the stack trace to the webpage.
 - Make it look pretty - maybe use SASS or something else.
 	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.
-- At some point we need to look at implementing a HTTP server which proxies static asset requests to a 3rd party CDN and only
+- At some point we need to look at implementing a HTTP server which proxies static asset requests to a 3rd party CDN and ensures only
 certain requests actually make it to our backend, at the minute, all request are going to the backend (even for things like the
 favicon, which is causing some errors to be thrown when it doesn't exist.).
 
@@ -53,5 +53,5 @@ watch frontend assets for changes. You should do this any time you start working
 	- If only Java has changed, run `./rebuild --fast`, this will be significantly quicker than `./rebuild`.
 3. When editing client code:
 	- If it was a Freemarker template, just reload the page.
-	- IF it was JS/CSS, it will be loaded automatically.
+	- IF it was JS/CSS, it will be loaded automatically - provided `./run-dev` was executed.
 4. When done, run `docker-compose down` from the root directory, this will shut down all services (db/app).

@@ -7,11 +7,6 @@ services:
     image: dmoffat/dkpmanager
     ports:
       - 8080:8080
-    volumes:
-      - ./client/templates:/app/templates
-      - ./target/classes/com:/app/com
-      - ./target/classes/application.properties:/app/application.properties
-      - ./target/classes/messages.properties:/app/messages.properties
   db:
     container_name: dkpmanager_db
     command: --default-authentication-plugin=mysql_native_password
@@ -21,5 +16,3 @@ services:
     restart: always
     ports:
       - 9001:3306
-    volumes:
-      - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql

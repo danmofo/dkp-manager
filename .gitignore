@@ -15,5 +15,5 @@ target/
 node_modules/
 
 # Environment files
-.env
+*.env
 !template.env

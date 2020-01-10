@@ -1,0 +1,14 @@
+# Development specific stuff. Ideally this would be in the base file (docker-compose.yml) and this would contain overrides for prod,
+# but the way it works with > 1 .yml file is that it merges entries together, without removing old entries. So you end up with all
+# of the dev-only bind mounts in production (which fails, because those folders won't exist locally!)
+version: '3.1'
+services:
+  app:
+    volumes:
+      - ./client/templates:/app/templates
+      - ./target/classes/com:/app/com
+      - ./target/classes/application.properties:/app/application.properties
+      - ./target/classes/messages.properties:/app/messages.properties
+  db:
+    volumes:
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
