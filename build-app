@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Builds the app and creates a Docker image.
+# Builds the app and creates the Docker images.
 
 # Ensure env file is present - could make this more robust by checking each line inside template.env
 # is included in .env to ensure all values have been included.
@@ -19,5 +19,6 @@ cd target/dependency
 jar -xf ../*.jar
 cd ../../
 
-# Build the Docker image
-docker build -t dmoffat/dkpmanager .
+# Build the Docker image(s)
+docker build -f dockerfiles/app.dockerfile -t dmoffat/dkpmanager .
+docker build -f dockerfiles/nginx.dockerfile -t dmoffat/dkpmanager-nginx .

@@ -1,6 +1,6 @@
 # Dockerfile for the backend app.
-
 FROM openjdk:8-jre-alpine
+
 VOLUME /tmp
 
 # Copy our environment variables

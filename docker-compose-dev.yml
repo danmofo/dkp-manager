@@ -12,3 +12,6 @@ services:
   db:
     volumes:
       - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  nginx:
+    volumes:
+      - ./conf/dkpmanager.conf:/etc/nginx/conf.d/dkpmanager.conf

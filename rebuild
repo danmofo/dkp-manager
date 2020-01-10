@@ -11,7 +11,9 @@ fi
 # Restart - for some reason killing the container then starting it is substantially quicker than
 # letting docker-compose stop/start it, guess this is because the container isn't created from scratch.
 docker container kill dkpmanager_app
+docker container kill dkpmanager_nginx
 docker-compose start app
+docker-compose start nginx
 
 # Follow logs so we can run this from 1 terminal window, rather than having 1 window to restart and one to view logs.
 docker container logs dkpmanager_app -f --tail 100
