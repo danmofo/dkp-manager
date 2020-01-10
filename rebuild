@@ -2,9 +2,16 @@
 
 # Rebuilds the backend app
 
-# Build it
-./build-app
+# Skip building the docker image (useful for dev where class files are shared directly with the container).
+# If a Maven dependency has been updated however a full rebuild is required.
+if [[ "$1" != "--fast" ]]; then
+	./build-app
+fi
 
-# Restart
-docker container kill dkp-manager_app_1
-docker-compose up -d
+# Restart - for some reason killing the container then starting a specific service is substantially quicker than
+# letting docker-compose stop/start it the service.
+docker container kill dkpmanager_app
+docker-compose start app
+
+# Follow logs so we can view this from 1 terminal window
+docker container logs dkpmanager_app -f --tail 100
