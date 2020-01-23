@@ -44,7 +44,11 @@ favicon, which is causing some errors to be thrown when it doesn't exist.).
 
 ## Development
 
-Development should be the same on all platforms now this project is using Docker.
+Development should be the same on all platforms now this project is using Docker and Docker Compose which you need to have installed on the host machine.
+
+You need to have the following software installed on your host machine (this won't be required in the future, but for now it is):
+- NodeJS and NPM
+- Maven
 
 1. When first checking out/working on the project, run `./run-dev`. This will start the database, rebuild the Docker images and 
 watch frontend assets for changes. You should do this any time you start working on the project.

@@ -18,7 +18,7 @@ services:
       - 9001:3306
   nginx:
     container_name: dkpmanager_nginx
-    image: dmoffat/nginx
+    image: dmoffat/dkpmanager-nginx
     restart: always
     ports:
       - 80:80
