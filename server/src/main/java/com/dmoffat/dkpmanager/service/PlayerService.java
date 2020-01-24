@@ -1,8 +1,10 @@
 package com.dmoffat.dkpmanager.service;
 
+import com.dmoffat.dkpmanager.dao.DkpHistoryDao;
 import com.dmoffat.dkpmanager.dao.GuildDao;
 import com.dmoffat.dkpmanager.dao.PlayerDao;
 import com.dmoffat.dkpmanager.dao.WowClassDao;
+import com.dmoffat.dkpmanager.model.DkpHistory;
 import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.forms.LoginForm;
 import com.dmoffat.dkpmanager.model.forms.SignupForm;
@@ -17,6 +19,7 @@ import java.util.List;
 @Service
 public class PlayerService {
 
+    @Autowired private DkpHistoryDao dkpHistoryDao;
     @Autowired private ForgottenPasswordService forgottenPasswordService;
     @Autowired private GuildDao guildDao;
     @Autowired private PlayerDao playerDao;
@@ -24,6 +27,17 @@ public class PlayerService {
 
     public Player findById(Integer playerId) {
         return playerDao.find(playerId);
+    }
+
+    public Results<DkpHistory> findDkpHistoryByPlayerId(Integer playerId, Integer pageNum) {
+        Results.Parameters params = new Results.Parameters();
+        params.setPage(pageNum);
+
+        Results<DkpHistory> results = new Results<>(params);
+        results.setNumFound(dkpHistoryDao.countByPlayerId(playerId).intValue());
+        results.setItems(dkpHistoryDao.findByPlayerId(playerId, params));
+
+        return results;
     }
 
     /**

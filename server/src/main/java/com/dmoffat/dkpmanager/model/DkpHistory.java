@@ -1,5 +1,7 @@
 package com.dmoffat.dkpmanager.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -18,6 +20,7 @@ public class DkpHistory {
 
     private String reason;
 
+    @CreationTimestamp
     private LocalDateTime created;
 
     public Integer getId() { return id; }

@@ -27,7 +27,7 @@ public class Player {
     @Column(name = "dkp")
     private Double dkp;
 
-    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "player")
     private List<DkpHistory> dkpHistory;
 
     @Column(name = "email")

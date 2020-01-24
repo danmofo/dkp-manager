@@ -12,6 +12,7 @@ import LoginForm from './login-form'
 import PlayerList from './player-list'
 import ResetPasswordForm from './reset-password-form'
 import SignupForm from './signup-form'
+import DkpHistoryList from './dkp-history-list';
 
 // todo: add some path based initialisation
 new AddDkpDecayIntervalForm();
@@ -26,3 +27,4 @@ new LoginForm();
 new PlayerList();
 new ResetPasswordForm();
 new SignupForm();
+new DkpHistoryList();

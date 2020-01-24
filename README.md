@@ -16,7 +16,6 @@ considering this idea, I would just write a WoW plugin.**
 	- MySQL CLI
 
 ## Up next...
-- Write some pagination for pages which list items - guild list, dkp history page, players list page 
 - Allow users to change to details
 - Add a 404 page for when pages can't be found. Show the template that couldn't be found.
 - Add a 5xx page for when pages throw an error, and in development, print the stack trace to the webpage.
@@ -34,7 +33,6 @@ favicon, which is causing some errors to be thrown when it doesn't exist.).
 - Fixing generated SQL by modifying object mappings.
 - CSRF protection
 - Expire forgotten password token after a set amount of time.
-- Different configuration for different environments - production / dev
 - Domain name (replace localhost references with new domain) and SSL cert setup
 - Add the ability to edit a DKP decay interval.
 - Add the ability to decay DKP at intervals using percentages rather than fixed numbers.

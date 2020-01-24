@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Rebuilds the backend app
+# todo: Add an additional flag (alongside --fast) which allows you to skip nginx, have commented out for now.
 
 # Skip building the docker image (useful for dev where class files are shared directly with the container).
 # If a Maven dependency has been updated however a full rebuild is required.
@@ -11,9 +12,9 @@ fi
 # Restart - for some reason killing the container then starting it is substantially quicker than
 # letting docker-compose stop/start it, guess this is because the container isn't created from scratch.
 docker container kill dkpmanager_app
-docker container kill dkpmanager_nginx
+#docker container kill dkpmanager_nginx
 docker-compose start app
-docker-compose start nginx
+#docker-compose start nginx
 
 # Follow logs so we can run this from 1 terminal window, rather than having 1 window to restart and one to view logs.
 docker container logs dkpmanager_app -f --tail 100

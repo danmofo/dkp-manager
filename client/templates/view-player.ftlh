@@ -3,19 +3,13 @@
 	<h1>${player.name} &lt;${player.guild.name}&gt; </h1>
 	<p>Total DKP: <strong>${player.dkp}</strong></p>
 
-	<h2>DKP breakdown</h2>
-	<table>
-		<tr>
-			<th>Date received</th>
-			<th>Amount</th>
-			<th>Reason</th>
-		</tr>
-		<#list player.dkpHistory as historyItem>
-			<tr>
-				<td>${historyItem.created}</td>
-				<td>${historyItem.dkp}</td>
-				<td>${historyItem.reason}</td>
-			</tr>
-		</#list>
-	</table>
+	<#if dkpHistoryResults.numFound == 0>
+		<p>This player currently doesn't have any DKP history to view.</p>
+	<#else>
+		<h2>DKP breakdown</h2>
+
+		<div class="js-dkp-history-list" data-player-id="${player.id}">
+			<#include "dkp-history-results.ftlh" />
+		</div>
+	</#if>
 </@layout.general>
