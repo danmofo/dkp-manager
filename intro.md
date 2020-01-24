@@ -1,0 +1,10 @@
+- What the project is / what the point of it is.
+- Technology used
+	- Backend, Java/Spring/Hibernate
+	- Frontend, HTML,CSS,JS and Webpack
+	- Database, MySQL
+	- Development environment, Docker containers
+	- Tools used, IntelliJ, Ubuntu
+- Where we are now
+- What we are doing next - go through README and revise priority.
+- Outline some learning goals
