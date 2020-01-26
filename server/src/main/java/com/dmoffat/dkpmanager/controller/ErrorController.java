@@ -18,10 +18,12 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 
         Integer statusCode = (Integer)req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-        if(statusCode == 404) {
-            return "forward:/404";
+        if(statusCode != null) {
+            if(statusCode == 404) {
+                return "forward:/404";
+            }
         }
-
+        
         return "error";
     }
 
