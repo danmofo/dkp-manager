@@ -4,7 +4,7 @@
 	- Frontend, HTML,CSS,JS and Webpack
 	- Database, MySQL
 	- Development environment, Docker containers
-	- Tools used, IntelliJ, Ubuntu
+	- Tools used, IntelliJ, Sublime Text 3, DBeaver, Ubuntu 18
 - Where we are now
 - What we are doing next - go through README and revise priority.
-- Outline some learning goals
+- Outline some learning goals - why are we doing this?

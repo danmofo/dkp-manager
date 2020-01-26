@@ -17,7 +17,6 @@ considering this idea, I would just write a WoW plugin.**
 
 ## Up next...
 - Allow users to change to details
-- Add a 404 page for when pages can't be found. Show the template that couldn't be found.
 - Add a 5xx page for when pages throw an error, and in development, print the stack trace to the webpage.
 - Make it look pretty - maybe use SASS or something else.
 	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.

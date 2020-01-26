@@ -2,7 +2,6 @@ package com.dmoffat.dkpmanager.controller;
 
 import com.dmoffat.dkpmanager.model.Player;
 import com.dmoffat.dkpmanager.model.pagination.DkpHistoryParameters;
-import com.dmoffat.dkpmanager.model.pagination.PlayerParameters;
 import com.dmoffat.dkpmanager.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
