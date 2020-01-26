@@ -17,7 +17,6 @@ considering this idea, I would just write a WoW plugin.**
 
 ## Up next...
 - Allow users to change to details
-- Add a 5xx page for when pages throw an error, and in development, print the stack trace to the webpage.
 - Make it look pretty - maybe use SASS or something else.
 	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.
 - At some point we need to look at implementing a HTTP server which proxies static asset requests to a 3rd party CDN and ensures only
