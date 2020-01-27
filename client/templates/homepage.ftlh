@@ -6,10 +6,12 @@
 	<div class="hero">
 		<div class="container">
 			<h1 class="hero__title">DKP Manager</h1>
-			<p class="hero__intro">A website where you can manage and view your DKP in the game World of Warcraft.</p>
+			<div>
+				<p class="hero__intro">A website where you can manage and view your DKP in the game World of Warcraft.</p>
+			</div>
 		</div>
 	</div>
-
+<#-- 
 	<section class="band">
 		<div class="container">
 			<h2 class="band__title">This is a feature</h2>
@@ -29,6 +31,6 @@
 			<h2 class="band__title">Get started now!</h2>
 			<a href="" class="btn">Get started</a>
 		</div>
-	</section>
+	</section> -->
 
 </@layout.general>

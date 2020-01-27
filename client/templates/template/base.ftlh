@@ -12,13 +12,13 @@
 		<ul class="navigation">
 			<div class="container">
 				<#if session.loggedIn>
-					<li class="navigation__item"><a href="/dashboard">Dashboard</a></li>
+					<li class="navigation__item is-active"><a href="/dashboard">Dashboard</a></li>
 
 					<#if session.player.isGuildMaster>
 						<li class="navigation__item"><a href="/guild-management/">Guild management</a></li>
 					</#if>
 				<#else>
-					<li class="navigation__item"><a href="/">Homepage</a></li>
+					<li class="navigation__item is-active"><a href="/">DKP Manager</a></li>
 				</#if>
 				<li class="navigation__item"><a href="/guilds">Guilds</a></li>
 				<li class="navigation__item"><a href="/about">About</a></li>

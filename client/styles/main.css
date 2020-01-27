@@ -10,8 +10,8 @@
  * Variables
  */
 :root {
-	--brand-primary: #3581B8;
-	--brand-primary-dark: #2C6A97;
+	--brand-primary: #000;
+	--brand-primary-dark: #333;
 	--brand-alt: #FCB07E;
 }
 
@@ -23,6 +23,7 @@ html {
 	font-family: 'Open Sans';
 	font-size: 16px;
 	color: #262626;
+	background-color: var(--brand-primary);
 }
 
 body {
@@ -71,6 +72,8 @@ h1, h2, h3, h4, h5 {
 	background-color: var(--brand-primary);
 	padding-left: 30px;
 	padding-right: 30px;
+	font-size: 14px;
+	text-align: center;
 }
 
 .navigation__item {
@@ -80,12 +83,12 @@ h1, h2, h3, h4, h5 {
 .navigation__item a {
 	color: #F3F8F2;
 	text-decoration: none;
-	padding: 20px 30px;
+	padding: 10px 30px;
 	display: block;
 	transition: background .20s ease-in-out;
 }
 
-.navigation__item a:hover {
+.navigation__item a:hover, .navigation__item.is-active {
 	background-color: var(--brand-primary-dark);
 }
 
@@ -98,17 +101,30 @@ h1, h2, h3, h4, h5 {
  */
 .hero {
 	text-align: center;
-	background-color: #EBE9E9;
+	background-image: url('http://localhost/images/hero.jpg');
+	background-size: cover;
 	padding-top: 50px;
 	padding-bottom: 70px;
+	min-height: 500px;
 }
 
 .hero__title {
-	margin-bottom: 10px;
+	background-color: rgba(14, 14, 14, 0.9);
+	display: inline-block;
+	color: #FFF;
+	padding: 10px;
+	margin-top: 150px;
+	margin-bottom: 0;
 }
 
 .hero__intro {
 	font-weight: 200;
+	background-color: rgba(14, 14, 14, 0.9);
+	display: inline-block;
+	color: #FFF;
+	padding: 10px;
+	margin: 0;
+	margin-top: 5px;
 }
 
 /**

@@ -15,3 +15,4 @@ services:
   nginx:
     volumes:
       - ./conf/dkpmanager.conf:/etc/nginx/conf.d/dkpmanager.conf
+      - ./client/images:/app/images

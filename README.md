@@ -16,9 +16,11 @@ considering this idea, I would just write a WoW plugin.**
 	- MySQL CLI
 
 ## Up next...
-- Allow users to change to details
+- Remove hardcoded URL from webpack CSS image references, currently when we try and access /images/blah it's pointing to localhost:8081
+- Improve dev/build scripts so that changes to docker-compose-dev are applied when restarting everything.
 - Make it look pretty - maybe use SASS or something else.
 	- Look at Grid/Flexbox maybe?!? Havne't looked at those much yet.
+- Allow users to change their details
 - At some point we need to look at implementing a HTTP server which proxies static asset requests to a 3rd party CDN and ensures only
 certain requests actually make it to our backend, at the minute, all request are going to the backend (even for things like the
 favicon, which is causing some errors to be thrown when it doesn't exist.).
