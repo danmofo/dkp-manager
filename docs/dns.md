@@ -74,8 +74,6 @@ with a value of example.com, when a DNS server hits the records for www.example.
 
 These records must ALWAYS point to a hostname, and never an IP address.
 
-
-
-
 Useful links:
 - https://www.cloudflare.com/learning/dns/what-is-dns/
+- https://dyn.com/blog/dns-why-its-important-how-it-works/
