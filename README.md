@@ -57,3 +57,6 @@ watch frontend assets for changes. You should do this any time you start working
 	- If it was a Freemarker template, just reload the page.
 	- IF it was JS/CSS, it will be loaded automatically - provided `./run-dev` was executed.
 4. When done, run `docker-compose down` from the root directory, this will shut down all services (db/app).
+
+## Random
+Take a look here for getting the static assets working: https://github.com/webpack/webpack-dev-server/tree/master/examples/cli/https

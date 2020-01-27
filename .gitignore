@@ -9,12 +9,13 @@
 # Compiled Java sources
 target/
 
-# Super secret key
-.secretkey
-
 # JS dependencies
 node_modules/
 
 # Environment files
 *.env
 !template.env
+
+# Other sensitive files
+conf/certs/
+.secretkey
