@@ -24,6 +24,8 @@ considering this idea, I would just write a WoW plugin.**
 - At some point we need to look at implementing a HTTP server which proxies static asset requests to a 3rd party CDN and ensures only
 certain requests actually make it to our backend, at the minute, all request are going to the backend (even for things like the
 favicon, which is causing some errors to be thrown when it doesn't exist.).
+- We need to make the domain configurable for the certificate generation process, at the minute it has moff.rocks hardcoded everywhere which won't work very well
+when we want to use a proper domain.
 
 ## Webpack notes
 - We need a prod config.
@@ -48,8 +50,9 @@ You need to have the following software installed on your host machine (this won
 - NodeJS and NPM
 - Maven
 
-1. When first checking out/working on the project, run `./run-dev`. This will start the database, rebuild the Docker images and 
-watch frontend assets for changes. You should do this any time you start working on the project.
+1. When first checking out/working on the project
+	- Generate the SSL certificates by running `./generate-letsencrypt-certs.sh`, this should produce a bunch of `.pem` files in the conf/certs/moff.rocks folder.
+	- Run `./run-dev`. This will start the database, rebuild the Docker images and watch frontend assets for changes. You should do this any time you start working on the project.
 2. After editing Java:
 	- If a dependency has changed, run `./rebuild`
 	- If only Java has changed, run `./rebuild --fast`, this will be significantly quicker than `./rebuild`.
@@ -60,4 +63,4 @@ watch frontend assets for changes. You should do this any time you start working
 
 ## Random notes...
 - Take a look here for getting the static assets working: https://github.com/webpack/webpack-dev-server/tree/master/examples/cli/https
-- ...
+- Cannot seem to access dev.moff.rocks until you fetch the DNS records using `dig`, I don't know why.

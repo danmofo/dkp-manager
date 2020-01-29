@@ -10,7 +10,13 @@
 
 FROM alpine:3.11.3
 
-RUN apk add certbot
+RUN apk add certbot curl jq
 
-# RUN certbot certonly --staging --manual --non-interactive --agree-tos --no-eff --manual-public-ip-logging-ok --preferred-challenges dns --email danmofo@gmail.com --domain *.moff.rocks
-# RUN certbot certonly --manual --preferred-challenges dns --domain dev.moff.rocks
+COPY scripts/generate-certs.sh /generate-certs.sh
+
+# Copy scripts needed to create/delete DNS records for letsencrypt DNS challenge
+COPY .env /.env
+COPY scripts/create-txt-record.sh /scripts/create-txt-record.sh
+COPY scripts/delete-txt-record.sh /scripts/delete-txt-record.sh
+
+ENTRYPOINT ["sh", "/generate-certs.sh"]
