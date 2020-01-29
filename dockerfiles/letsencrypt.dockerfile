@@ -12,4 +12,5 @@ FROM alpine:3.11.3
 
 RUN apk add certbot
 
-# RUN certbot --manual --preferred-challenges dns -d *.moff.rocks
+# RUN certbot certonly --staging --manual --non-interactive --agree-tos --no-eff --manual-public-ip-logging-ok --preferred-challenges dns --email danmofo@gmail.com --domain *.moff.rocks
+# RUN certbot certonly --manual --preferred-challenges dns --domain dev.moff.rocks
