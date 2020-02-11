@@ -26,6 +26,7 @@ certain requests actually make it to our backend, at the minute, all request are
 favicon, which is causing some errors to be thrown when it doesn't exist.).
 - We need to make the domain configurable for the certificate generation process, at the minute it has moff.rocks hardcoded everywhere which won't work very well
 when we want to use a proper domain.
+- Write a script which renews the certificates and restarts/rebuilds the nginx container.
 
 ## Webpack notes
 - We need a prod config.
