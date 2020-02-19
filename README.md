@@ -34,6 +34,7 @@ when we want to use a proper domain.
 ## Features/functions
 
 - Fixing generated SQL by modifying object mappings.
+	- Guild list page
 - CSRF protection
 - Expire forgotten password token after a set amount of time.
 - Domain name (replace localhost references with new domain) and SSL cert setup

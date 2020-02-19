@@ -6,9 +6,8 @@
 		<title>Page title goes here - todo</title>
 		<link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/styles/main.css" />
-
 	</head>
-	<body>
+	<body class="page--${pageName}">
 		<ul class="navigation">
 			<div class="container">
 				<#if session.loggedIn>
@@ -33,8 +32,9 @@
 				</#if>
 			</div>
 		</ul>
-		<#nested />	
-
+		<div class="page-content">
+			<#nested />
+		</div>
 		<script src="/scripts/main.js"></script>
 	</body>
 	</html>

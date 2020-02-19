@@ -1,10 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Alatsi|Open+Sans:300,400&display=swap);
 /**
  * Main stylesheet for DKP Manager website.
  *
  * Scheme: https://coolors.co/ebe9e9-f3f8f2-3581b8-fcb07e-dee2d6
  */
-
-@import url('https://fonts.googleapis.com/css?family=Alatsi|Open+Sans:300,400&display=swap');
 
 /**
  * Variables
@@ -40,11 +39,20 @@ h1, h2, h3, h4, h5 {
 	font-family: 'Alatsi';
 	font-weight: normal;
 	margin-top: 0;
+	color: #fff;
+}
+
+a, p, label {
+	color: #c6c6c6;
 }
 
 /**
  * Layout
  */
+
+.page-content {
+	margin-top: 30px;
+}
 
 .container {
 	width: 960px;
@@ -73,6 +81,10 @@ h1, h2, h3, h4, h5 {
 	padding-left: 30px;
 	padding-right: 30px;
 	font-size: 14px;
+	text-align: left;
+}
+
+.page--home .navigation {
 	text-align: center;
 }
 
@@ -107,6 +119,11 @@ h1, h2, h3, h4, h5 {
 	padding-bottom: 70px;
 	min-height: 500px;
 }
+
+.page-content .hero {
+	margin-top: -30px;
+}
+
 
 .hero__title {
 	background-color: rgba(14, 14, 14, 0.9);
