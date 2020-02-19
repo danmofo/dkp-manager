@@ -3,6 +3,8 @@ FROM nginx
 
 # todo: this should only happen locally, in production the images will be stored somewhere else.
 RUN mkdir -p /app/images
+RUN mkdir -p /app/scripts
+RUN mkdir -p /app/styles
 
 # Clear out default configuration
 RUN rm /etc/nginx/conf.d/default.conf

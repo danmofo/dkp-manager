@@ -16,3 +16,5 @@ services:
     volumes:
       - ./conf/dkpmanager.conf:/etc/nginx/conf.d/dkpmanager.conf
       - ./client/images:/app/images
+      - ./dist/main.js:/app/scripts/main.js
+      - ./dist/main.css:/app/styles/main.css

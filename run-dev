@@ -10,4 +10,4 @@
 docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d
 
 # Listen for changes to frontend assets - this will require an NPM install on the host machine!
-npm run dev-server
+npm run dev

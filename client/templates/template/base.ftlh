@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Page title goes here - todo</title>
 		<link href="https://fonts.googleapis.com/css?family=Alatsi&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="http://localhost:8081/main.css" />
+		<link rel="stylesheet" href="/styles/main.css" />
 
 	</head>
 	<body>
@@ -35,7 +35,7 @@
 		</ul>
 		<#nested />	
 
-		<script src="http://localhost:8081/main.js"></script>
+		<script src="/scripts/main.js"></script>
 	</body>
 	</html>
 </#macro>
