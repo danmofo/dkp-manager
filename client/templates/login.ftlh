@@ -2,28 +2,34 @@
 <#import "/spring.ftl" as spring />
 
 <@layout.general>
-    <h1>Log in</h1>
+    <div class="container ta-c">
+        <div class="login-form">
+            <h1>Log in</h1>
 
-    <form action="/login" method="POST" class="js-login-form">
+            <form action="/login" method="POST" class="js-login-form">
 
-        <div class="form-group">
-            <@spring.bind "loginForm.email" />
-            <label for=" ${spring.status.expression}">Email address</label>
-            <input type="email" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
-            <span class="error error_${spring.status.expression}"></span>
+                <div class="form-group">
+                    <@spring.bind "loginForm.email" />
+                    <label for=" ${spring.status.expression}">Email address</label>
+                    <input type="email" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
+                    <span class="error error_${spring.status.expression}"></span>
+                </div>
+
+                <div class="form-group">
+                    <@spring.bind "loginForm.password" />
+                    <label for=" ${spring.status.expression}">Password</label>
+                    <input type="password" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
+                    <span class="error error_${spring.status.expression}"></span>
+                </div>
+
+                <input class="btn btn--primary" type="submit" value="Log in" />
+
+            </form>
+            
+            <div class="login-form__help clear">
+                <p>If you don't have an account, you can <a href="/signup">Sign up here.</a></p>
+                <p>Forgotten your password? <a href="/forgotten-password">Reset your password</a></p>
+            </div>
         </div>
-
-        <div class="form-group">
-            <@spring.bind "loginForm.password" />
-            <label for=" ${spring.status.expression}">Password</label>
-            <input type="password" name="${spring.status.expression}" value="${spring.status.value?default('')}" />
-            <span class="error error_${spring.status.expression}"></span>
-        </div>
-
-        <input type="submit" value="Log in" />
-
-    </form>
-
-    <p>If you don't have an account, you can <a href="/signup">Sign up here.</a></p>
-    <p>Forgotten your password? <a href="/forgotten-password">Reset your password</a></p>
+    </div>
 </@layout.general>
