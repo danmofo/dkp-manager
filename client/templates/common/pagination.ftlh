@@ -4,24 +4,24 @@
 		<#return>
 	</#if>
 
-	<div class="js-pagination" data-current-page="${results.parameters.page}">
-		<p>Page <strong>${results.parameters.page}</strong> of <strong>${results.numPages}</strong></p>
-
+	<div class="pagination js-pagination" data-current-page="${results.parameters.page}">
 		<#if results.hasPrevPage()>
 			<#if results.numPages &gt; 2>
-				<button class="js-pagination-page" data-page="1">First page</button>
+				<button class="btn btn--sm btn--secondary js-pagination-page" data-page="1">First</button>
 			</#if>
 
-			<button class="js-pagination-page" data-page="${results.prevPageNum()}">Prev page</button>
+			<button class="btn btn--sm btn--primary js-pagination-page" data-page="${results.prevPageNum()}"> &laquo; Previous</button>
 		</#if>
 
 		<#if results.hasNextPage()>
-			<button class="js-pagination-page" data-page="${results.nextPageNum()}">Next page</button>
+			<button class="btn btn--sm btn--primary js-pagination-page" data-page="${results.nextPageNum()}">Next &raquo;</button>
 
 			<#if results.numPages &gt; 2>
-				<button class="js-pagination-page" data-page="${results.numPages}">Last page</button>
+				<button class="btn btn--sm btn--secondary js-pagination-page" data-page="${results.numPages}">Last</button>
 			</#if>
 		</#if>
+
+		<span class="pagination__text">Page <strong>${results.parameters.page}</strong> of <strong>${results.numPages}</strong></span>
 	</div>
 
 </#macro>

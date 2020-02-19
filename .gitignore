@@ -9,6 +9,9 @@
 # Compiled Java sources
 target/
 
+# Generated CSS/JS
+dist/
+
 # JS dependencies
 node_modules/
 

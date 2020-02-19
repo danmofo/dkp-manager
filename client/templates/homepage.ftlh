@@ -11,7 +11,7 @@
 			</div>
 		</div>
 	</div>
-<#-- 
+
 	<section class="band">
 		<div class="container">
 			<h2 class="band__title">This is a feature</h2>
@@ -31,6 +31,6 @@
 			<h2 class="band__title">Get started now!</h2>
 			<a href="" class="btn">Get started</a>
 		</div>
-	</section> -->
+	</section>
 
 </@layout.general>

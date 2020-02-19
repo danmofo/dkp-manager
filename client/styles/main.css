@@ -9,9 +9,16 @@
  * Variables
  */
 :root {
-	--brand-primary: #000;
-	--brand-primary-dark: #333;
-	--brand-alt: #FCB07E;
+	--brand-primary: #68302e;
+	--brand-primary-dark: #47211f;
+
+	--button-primary: var(--brand-primary);
+	--button-primary-active: var(--brand-primary-dark);
+
+	--button-secondary: #474747;
+	--button-secondary-active: #252525;
+
+	--body-text-color: #c6c6c6;
 }
 
 /**
@@ -22,7 +29,7 @@ html {
 	font-family: 'Open Sans';
 	font-size: 16px;
 	color: #262626;
-	background-color: var(--brand-primary);
+	background-color: #000;
 }
 
 body {
@@ -43,7 +50,7 @@ h1, h2, h3, h4, h5 {
 }
 
 a, p, label {
-	color: #c6c6c6;
+	color: var(--body-text-color);
 }
 
 /**
@@ -77,7 +84,7 @@ a, p, label {
 	padding: 0;
 	margin: 0;
 	display: block;
-	background-color: var(--brand-primary);
+	background-color: #000;
 	padding-left: 30px;
 	padding-right: 30px;
 	font-size: 14px;
@@ -101,7 +108,7 @@ a, p, label {
 }
 
 .navigation__item a:hover, .navigation__item.is-active {
-	background-color: var(--brand-primary-dark);
+	background-color: #333;
 }
 
 .navigation__item:last-child {
@@ -148,17 +155,43 @@ a, p, label {
  * Buttons
  */
 
+/* Base */
 .btn {
-	background-color: var(--brand-primary);
+	border: 0;
+	background-color: none;
 	text-decoration: none;
 	padding: 10px 20px;
 	border-radius: 3px;
 	color: #fff;
+	transition: background .2s ease-in-out;
 }
 
 .btn:hover {
-	background-color: var(--brand-primary-dark);
+	cursor: pointer;
 }
+
+/* Sizing */
+.btn--sm {
+	padding: 5px 10px;	
+}
+
+/* Colours */
+.btn--primary {
+	background-color: var(--button-primary);
+}
+
+.btn--primary:hover {
+	background-color: var(--button-primary-active);
+}
+
+.btn--secondary {
+	background-color: var(--button-secondary);
+}
+
+.btn--secondary:hover {
+	background-color: var(--button-secondary-active);
+}
+
 
 /**
  * Forms
@@ -216,9 +249,23 @@ input[type="date"] {
 }
 
 .band--highlight {
-	background-color: var(--brand-alt);
 }
 
 .band--highlight > * {
 	
+}
+
+
+/**
+ * Pagination
+ */
+
+.pagination {
+	margin-top: 30px;
+}
+
+.pagination__text {
+	color: var(--body-text-color);
+	font-size: 14px;
+	margin-left: 10px;
 }
